@@ -1,0 +1,63 @@
+.navigation {
+  position: relative;
+  width: 100%;
+  gap: clamp(5px, 1vw, 10px);
+
+  .input {
+    background-color: var(--purple-color) !important;
+    color: #fff;
+
+    font-family: 'Epilogue', serif;
+
+    &::placeholder {
+      color: #fff;
+    }
+  }
+
+  .btns {
+    gap: clamp(3px, 0.5vw, 5px);
+
+    button {
+      border-radius: clamp(8px, 1vw, 10px);
+      background-color: transparent;
+      color: #5f6c72 !important;
+      gap: clamp(3px, 0.5vw, 5px);
+      transition: all 0.3s;
+
+      svg,
+      svg path {
+        stroke: #5f6c72 !important;
+        transition: all 0.3s;
+      }
+
+      &:hover {
+        background-color: var(--purple-color);
+        color: #fff !important;
+
+        svg,
+        svg path {
+          stroke: #fff !important;
+        }
+      }
+    }
+
+    .active {
+      width: 100%;
+      height: clamp(32px, 4vw, 38px);
+      background-color: var(--purple-color);
+      color: #fff !important;
+      border: clamp(1px, 0.2vw, 2px) solid var(--purple);
+      padding: clamp(8px, 1.5vw, 12px) clamp(16px, 2vw, 24px);
+      display: flex;
+      align-items: center;
+      white-space: nowrap;
+      font-family: 'Public Sans', serif;
+
+      svg,
+      svg path {
+        stroke: #fff !important;
+        stroke-width: 2;
+      }
+    }
+  }
+}

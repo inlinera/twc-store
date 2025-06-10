@@ -1,0 +1,44 @@
+@mixin button {
+  position: relative;
+  width: 100%;
+  border: clamp(1px, 0.2vw, 2px) solid var(--purple);
+  padding: clamp(8px, 1.5vw, 12px) clamp(16px, 2vw, 24px);
+  height: clamp(32px, 4vw, 38px);
+  font-family: 'Public Sans', serif;
+  font-size: clamp(12px, 1vw + 0.2rem, 14px);
+  font-weight: 500;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: all 0.2s ease;
+
+  svg {
+    width: clamp(16px, 2vw, 20px);
+    height: clamp(16px, 2vw, 20px);
+  }
+}
+
+.default {
+  @include button;
+  background-color: var(--purple-color);
+  color: #fff;
+  border-radius: 3px;
+}
+
+.outlined {
+  @include button;
+  background-color: transparent;
+  color: var(--purple-color);
+  border-radius: 3px;
+
+  &:hover {
+    background-color: var(--purple-color);
+    color: #fff;
+  }
+}
+
+.round {
+  @include button;
+  background-color: var(--purple-color);
+  color: #fff;
+  border-radius: 100%;
+}

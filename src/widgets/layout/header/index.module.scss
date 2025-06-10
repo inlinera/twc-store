@@ -1,0 +1,19 @@
+.header {
+  position: fixed;
+  width: 100vw;
+  height: clamp(40px, 5vw, 50px);
+  padding: clamp(10px, 2vw, 20px);
+  justify-content: space-between;
+
+  .location {
+    gap: clamp(5px, 1vw, 10px);
+
+    div {
+      gap: clamp(3px, 0.5vw, 5px);
+    }
+  }
+
+  .routes {
+    gap: clamp(10px, 2vw, 15px);
+  }
+}
