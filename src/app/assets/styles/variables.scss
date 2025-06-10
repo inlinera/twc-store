@@ -1,0 +1,9 @@
+html[data-theme='light'] {
+  --body-color: #fff;
+  --default: #000;
+}
+
+html[data-theme='dark'] {
+  --body-color: #000;
+  --default: #fff;
+}
