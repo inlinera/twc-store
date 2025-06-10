@@ -4,6 +4,8 @@
   height: clamp(40px, 5vw, 50px);
   padding: clamp(10px, 2vw, 20px);
   justify-content: space-between;
+  z-index: 999;
+  background-color: #fff;
 
   .location {
     gap: clamp(5px, 1vw, 10px);

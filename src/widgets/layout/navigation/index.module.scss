@@ -1,6 +1,7 @@
 .navigation {
   position: relative;
   width: 100%;
+  margin-bottom: 20px;
   gap: clamp(5px, 1vw, 10px);
 
   .input {
@@ -20,13 +21,13 @@
     button {
       border-radius: clamp(8px, 1vw, 10px);
       background-color: transparent;
-      color: #5f6c72 !important;
+      color: var(--light-gray-color) !important;
       gap: clamp(3px, 0.5vw, 5px);
       transition: all 0.3s;
 
       svg,
       svg path {
-        stroke: #5f6c72 !important;
+        stroke: var(--light-gray-color) !important;
         transition: all 0.3s;
       }
 

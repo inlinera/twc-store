@@ -1,0 +1,10 @@
+.rating {
+  position: relative;
+  height: max-content;
+  margin-bottom: 10px;
+  gap: 7px;
+
+  .stars {
+    gap: 3px;
+  }
+}

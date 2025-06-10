@@ -1,0 +1,50 @@
+.info {
+  position: relative;
+  gap: clamp(16px, 2vw, 24px);
+
+  h1 {
+    font-size: clamp(24px, 2vw, 32px);
+    line-height: 1.2;
+  }
+
+  .gridInfo {
+    gap: clamp(8px, 1vw, 16px);
+    grid-template-columns: repeat(2, 1fr);
+
+    .green {
+      color: #2db224;
+    }
+
+    .gray {
+      color: var(--light-gray-color);
+    }
+
+    p {
+      font-size: clamp(14px, 1.5vw, 16px);
+    }
+  }
+
+  .price {
+    gap: clamp(8px, 1vw, 16px);
+    font-size: clamp(20px, 2.5vw, 28px);
+
+    b {
+      font-weight: 600;
+      color: var(--purple-color);
+    }
+
+    s {
+      margin-right: 6px;
+      font-size: clamp(16px, 2vw, 20px);
+      color: #999;
+    }
+
+    .discount {
+      font-size: clamp(14px, 1.5vw, 16px);
+      padding: clamp(7px, 1vw, 9px);
+      font-weight: 600;
+      background-color: #efd33d;
+      border-radius: 2px;
+    }
+  }
+}
