@@ -1,15 +1,16 @@
 import { Input } from '@/shared/ui/input'
 import s from './index.module.scss'
 import { Search } from '@/shared/icons/search'
-import { Button } from '@/shared/ui/button'
-import { useLocation } from 'react-router-dom'
+import { Link, useLocation } from 'react-router-dom'
 import { MapPinLine } from '@/shared/icons/mappinline'
 import { Headphones } from '@/shared/icons/headphones'
 import { Info } from '@/shared/icons/info'
 import { CaretDown } from '@/shared/icons/caretdown'
 import type { ILinkButton } from '@/shared/interfaces/ILinkButton'
+import { Breadcrumbs } from '@/shared/ui/breadcrumbs'
 
 const btns: ILinkButton[] = [
+  { title: 'Все категории', path: '/', icon: <CaretDown /> },
   { title: 'Отследить заказ', path: '/order', icon: <MapPinLine /> },
   { title: 'Поддержка', path: '/support', icon: <Headphones /> },
   { title: 'Нужна помощь', path: '/help', icon: <Info /> },
@@ -30,25 +31,24 @@ export const Navigation = () => {
         }
       />
       <div className={`${s.btns} df aic`}>
-        <Button className={s.active}>
-          Все категории <CaretDown />
-        </Button>
-        {btns.map(b => {
-          const isActive = pathname === b.path
+        {btns.map((b, id) => {
+          const isReverse = id === 0 ? s.rowRev : ''
+          const isActive = pathname === b.path || (pathname.startsWith('/product') && id === 0)
 
           if (isActive)
             return (
-              <Button className={s.active}>
+              <Link to={b.path} className={`${s.active} df ${isReverse ? s.rowRev : ''}`} key={id}>
                 {b.icon} {b.title}
-              </Button>
+              </Link>
             )
           return (
-            <Button>
+            <Link to={b.path} className={`df ${isReverse ? s.rowRev : ''}`} key={id}>
               {b.icon} {b.title}
-            </Button>
+            </Link>
           )
         })}
       </div>
+      <Breadcrumbs />
     </nav>
   )
 }

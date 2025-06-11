@@ -2,6 +2,9 @@ import { ProductInfoBlock } from '@/entities/product/components/info-block'
 import { MainProductBlock } from '@/entities/product/components/main-block'
 import type { IProduct } from '@/shared/interfaces/IProduct'
 import s from './index.module.scss'
+import { observer } from 'mobx-react-lite'
+import { states } from '@/shared/stores/states'
+import { useEffect } from 'react'
 
 const product = {
   title: 'Футболка OnlineStore',
@@ -52,11 +55,17 @@ const product = {
   ),
 } as IProduct
 
-export const ProductPage = () => {
+export const ProductPage = observer(() => {
+  const { setPath } = states
+
+  useEffect(() => {
+    setPath([...product.path, product.title])
+  }, [])
+
   return (
     <div className={`${s.productPage} df fdc`}>
       <MainProductBlock {...product} />
       <ProductInfoBlock {...product} />
     </div>
   )
-}
+})

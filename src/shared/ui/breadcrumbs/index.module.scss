@@ -1,0 +1,27 @@
+.breadcrumbs {
+  position: relative;
+  margin-top: 5px;
+  margin-bottom: 5px;
+  margin-right: auto;
+  gap: 5px;
+  color: var(--light-gray-color);
+
+  a {
+    color: var(--light-gray-color);
+  }
+
+  .btn {
+    gap: 5px;
+
+    svg,
+    svg path {
+      stroke: var(--light-gray-color);
+    }
+
+    button {
+      &.active {
+        color: var(--purple-color) !important;
+      }
+    }
+  }
+}

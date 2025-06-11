@@ -18,17 +18,40 @@
   .btns {
     gap: clamp(3px, 0.5vw, 5px);
 
-    button {
+    a {
+      height: clamp(32px, 4vw, 38px);
+      padding: clamp(8px, 1.5vw, 12px) clamp(16px, 2vw, 24px);
       border-radius: clamp(8px, 1vw, 10px);
       background-color: transparent;
       color: var(--light-gray-color) !important;
       gap: clamp(3px, 0.5vw, 5px);
       transition: all 0.3s;
+      display: flex;
+      align-items: center;
+      white-space: nowrap;
+      font-family: 'Public Sans', serif;
 
       svg,
       svg path {
         stroke: var(--light-gray-color) !important;
         transition: all 0.3s;
+      }
+
+      &.rowRev {
+        flex-direction: row-reverse;
+      }
+
+      &.active {
+        width: 100%;
+        background-color: var(--purple-color);
+        color: #fff !important;
+        border: clamp(1px, 0.2vw, 2px) solid var(--purple);
+
+        svg,
+        svg path {
+          stroke: #fff !important;
+          stroke-width: 2;
+        }
       }
 
       &:hover {
@@ -39,25 +62,6 @@
         svg path {
           stroke: #fff !important;
         }
-      }
-    }
-
-    .active {
-      width: 100%;
-      height: clamp(32px, 4vw, 38px);
-      background-color: var(--purple-color);
-      color: #fff !important;
-      border: clamp(1px, 0.2vw, 2px) solid var(--purple);
-      padding: clamp(8px, 1.5vw, 12px) clamp(16px, 2vw, 24px);
-      display: flex;
-      align-items: center;
-      white-space: nowrap;
-      font-family: 'Public Sans', serif;
-
-      svg,
-      svg path {
-        stroke: #fff !important;
-        stroke-width: 2;
       }
     }
   }

@@ -5,8 +5,8 @@ export const ProductRating = () => {
   return (
     <div className={`${s.rating} df aic`}>
       <div className={`${s.stars} df aic`}>
-        {Array.from({ length: 5 }, () => (
-          <Star />
+        {Array.from({ length: 5 }, (_, id) => (
+          <Star key={id} />
         ))}
       </div>
       <b>4.7</b>
