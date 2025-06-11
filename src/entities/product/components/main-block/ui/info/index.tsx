@@ -1,15 +1,16 @@
 import type { IProduct } from '@/shared/interfaces/IProduct'
 import s from './index.module.scss'
+import { isProductAvailable } from '@/shared/functions/isProductAvailable'
 
 export const ProductInfo = ({ ...props }: IProduct) => {
-  const isAvailable = true
-
   const calculateDiscount = (oldPrice: number, currentPrice: number): number => {
     if (!oldPrice || oldPrice <= currentPrice) return 0
     return Math.round(((oldPrice - currentPrice) / oldPrice) * 100)
   }
 
   const discount = calculateDiscount(props.oldPrice || 0, props.price)
+
+  const isAvailable = isProductAvailable(props)
 
   return (
     <div className={`${s.info} df fdc`}>

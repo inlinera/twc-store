@@ -1,0 +1,41 @@
+.description {
+  position: relative;
+  width: 100%;
+  grid-template-columns: 3fr 1fr;
+  gap: 20px;
+
+  h3 {
+    font-size: clamp(14px, 2vw, 18px);
+    font-weight: 600;
+    color: var(--default);
+  }
+
+  p {
+    font-size: clamp(12px, 2vw, 14px);
+    line-height: clamp(17px, 2vw, 20px);
+    font-weight: 400;
+  }
+
+  .description__info {
+    gap: 20px;
+
+    p {
+      color: var(--light-gray-color);
+    }
+  }
+
+  .info {
+    gap: 10px;
+
+    p {
+      display: flex;
+      align-items: center;
+      gap: 5px;
+
+      svg,
+      svg path {
+        stroke: var(--purple-color);
+      }
+    }
+  }
+}

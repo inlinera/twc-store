@@ -1,5 +1,7 @@
+import { ProductInfoBlock } from '@/entities/product/components/info-block'
 import { MainProductBlock } from '@/entities/product/components/main-block'
 import type { IProduct } from '@/shared/interfaces/IProduct'
+import s from './index.module.scss'
 
 const product = {
   title: 'Футболка OnlineStore',
@@ -52,8 +54,9 @@ const product = {
 
 export const ProductPage = () => {
   return (
-    <div>
+    <div className={`${s.productPage} df fdc`}>
       <MainProductBlock {...product} />
+      <ProductInfoBlock {...product} />
     </div>
   )
 }

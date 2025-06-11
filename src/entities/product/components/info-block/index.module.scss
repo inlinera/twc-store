@@ -1,0 +1,10 @@
+.infoBlock {
+  width: 100%;
+  background-color: var(--el-color);
+  border-radius: 2px;
+  gap: 10px;
+
+  .info {
+    padding: 20px 65px;
+  }
+}
