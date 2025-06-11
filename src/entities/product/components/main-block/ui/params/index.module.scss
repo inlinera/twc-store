@@ -1,0 +1,105 @@
+.params {
+  width: 100%;
+  gap: 16px;
+  padding: 16px;
+  background-color: #fff;
+  border-radius: 8px;
+
+  .details {
+    width: 100% !important;
+    justify-content: space-between;
+    gap: clamp(24px, 10vw, 100%);
+
+    .colors {
+      gap: 12px;
+
+      .colorBtn {
+        width: 44px;
+        height: 44px;
+        padding: 3px;
+        border-radius: 50%;
+        cursor: pointer;
+        transition: all 0.2s ease;
+
+        &:hover {
+          transform: scale(1.1);
+        }
+
+        &.active {
+          border: 2px solid var(--purple-color);
+        }
+
+        div {
+          width: 100%;
+          height: 100%;
+          border-radius: 100%;
+
+          &.perple {
+            background-color: var(--purple-color);
+          }
+
+          &.black {
+            background-color: #000;
+          }
+
+          &.white {
+            background-color: #fff;
+            box-shadow: inset 0 -2px 6px rgba(0, 0, 0, 0.12);
+          }
+        }
+      }
+    }
+  }
+
+  .gap {
+    width: 100%;
+    margin-top: 20px;
+    gap: 1vw;
+
+    .btns {
+      width: 100%;
+      gap: 1vw;
+
+      button:nth-child(1) {
+        height: 45px;
+        width: 100%;
+        border: clamp(1px, 0.2vw, 2px) solid var(--purple);
+        padding: 10px clamp(16px, 2vw, 24px);
+        font-size: clamp(14px, 2vw, 16px);
+        font-weight: 600;
+        gap: 7px;
+        background-color: var(--purple-color);
+        color: #fff;
+        border-radius: 3px;
+      }
+
+      button:nth-child(2) {
+        height: 45px;
+        width: 40%;
+        border: clamp(1px, 0.2vw, 2px) solid var(--purple);
+        padding: 10px clamp(16px, 2vw, 24px);
+        font-size: clamp(14px, 2vw, 16px);
+        font-weight: 600;
+        gap: 7px;
+        background-color: transparent;
+        border: 2px solid var(--purple-color);
+        color: var(--purple-color);
+        border-radius: 3px;
+      }
+    }
+  }
+
+  .morebtns {
+    width: 100%;
+
+    button {
+      color: #8c8c8c;
+      gap: 5px;
+    }
+
+    svg,
+    svg path {
+      color: #8c8c8c;
+    }
+  }
+}

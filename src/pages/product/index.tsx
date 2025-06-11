@@ -11,9 +11,38 @@ const product = {
   price: 750,
   path: ['Магазин', 'Мужская одежда', 'Футболки'],
   specifications: {
-    Цвет: 'Фиолетовый, Черный, Белый',
-    Размеры: 'XS, S, M, L, XL, XXL',
-    Количество: '10 шт. каждого размера',
+    color: {
+      perple: {
+        size: {
+          XS: 10,
+          S: 10,
+          M: 10,
+          L: 10,
+          XL: 10,
+          XXL: 10,
+        },
+      },
+      black: {
+        size: {
+          XS: 10,
+          S: 10,
+          M: 10,
+          L: 10,
+          XL: 10,
+          XXL: 10,
+        },
+      },
+      white: {
+        size: {
+          XS: 10,
+          S: 10,
+          M: 10,
+          L: 10,
+          XL: 10,
+          XXL: 10,
+        },
+      },
+    },
   },
   images: Array.from(
     { length: 10 },

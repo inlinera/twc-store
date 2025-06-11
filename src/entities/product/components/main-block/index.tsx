@@ -3,6 +3,7 @@ import s from './index.module.scss'
 import { ProductImageCarousel } from './ui/image-carousel'
 import { ProductRating } from './ui/rates'
 import { ProductInfo } from './ui/info'
+import { ProductParams } from './ui/params'
 
 export const MainProductBlock = ({ ...props }: IProduct) => {
   return (
@@ -11,6 +12,7 @@ export const MainProductBlock = ({ ...props }: IProduct) => {
       <div className="df fdc">
         <ProductRating />
         <ProductInfo {...props} />
+        <ProductParams specifications={props.specifications} />
       </div>
     </div>
   )
