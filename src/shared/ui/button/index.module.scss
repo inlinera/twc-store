@@ -15,6 +15,10 @@
     width: clamp(16px, 2vw, 20px);
     height: clamp(16px, 2vw, 20px);
   }
+
+  &.disabled {
+    background-color: var(--light-gray-color) !important;
+  }
 }
 
 .default {
