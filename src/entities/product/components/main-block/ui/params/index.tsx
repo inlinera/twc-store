@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import s from './index.module.scss'
 import type { ColorT, IProduct } from '@/shared/interfaces/IProduct'
 import { Dropdown } from '@/shared/ui/dropdown'
@@ -7,17 +7,37 @@ import { Button } from '@/shared/ui/button'
 import { ShoppingCart } from '@/shared/icons/shoppingcart'
 import { Heart } from '@/shared/icons/Heart'
 import { Copy } from '@/shared/icons/Copy'
+import { cart } from '@/shared/stores/cart'
+import { observer } from 'mobx-react-lite'
 
-export const ProductParams = ({ specifications }: Pick<IProduct, 'specifications'>) => {
-  const colors = Object.keys(specifications.color) as ColorT[]
+interface ProductParamsProps {
+  product: IProduct
+}
+
+export const ProductParams = observer(({ product }: ProductParamsProps) => {
+  const { addItem, getAvailableQuantity } = cart
+  const colors = Object.keys(product.specifications.color) as ColorT[]
   const [choosenColor, setChoosenColor] = useState<ColorT>(colors[0])
-  const sizes = Object.entries(specifications.color[choosenColor].size)
+  const sizes = Object.entries(product.specifications.color[choosenColor].size)
     .filter(([, quantity]) => quantity >= 1)
     .map(([size]) => size)
   const [selectedSize, setSelectedSize] = useState(sizes[0])
   const [counterVal, setCounterVal] = useState(0)
 
-  const maxQuantity = specifications.color[choosenColor].size[selectedSize]
+  const availableQuantity = getAvailableQuantity(product, choosenColor, selectedSize)
+
+  useEffect(() => {
+    if (counterVal > availableQuantity) {
+      setCounterVal(availableQuantity)
+    }
+  }, [availableQuantity, choosenColor, selectedSize])
+
+  const handleAddToCart = () => {
+    if (counterVal > 0) {
+      addItem(product, choosenColor, selectedSize, counterVal)
+      setCounterVal(0)
+    }
+  }
 
   return (
     <div className={`${s.params} df fdc aic jcc`}>
@@ -43,12 +63,14 @@ export const ProductParams = ({ specifications }: Pick<IProduct, 'specifications
         />
       </div>
       <div className={`${s.gap} df aic jcsb`}>
-        <Counter value={counterVal} maxValue={maxQuantity} onChange={setCounterVal} />
+        <Counter value={counterVal} maxValue={availableQuantity} onChange={setCounterVal} />
         <div className={`${s.btns} df aic jcsb`}>
-          <Button className={`df aic jcc`}>
+          <Button className={`df aic jcc`} onClick={handleAddToCart} disabled={availableQuantity === 0}>
             ДОБАВИТЬ В КОРЗИНУ <ShoppingCart />
           </Button>
-          <Button className={`df aic jcc`}>КУПИТЬ</Button>
+          <Button className={`df aic jcc`} disabled={availableQuantity === 0}>
+            КУПИТЬ
+          </Button>
         </div>
       </div>
       <div className={`${s.morebtns} df aic jcsb`}>
@@ -61,4 +83,4 @@ export const ProductParams = ({ specifications }: Pick<IProduct, 'specifications
       </div>
     </div>
   )
-}
+})

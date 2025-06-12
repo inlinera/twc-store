@@ -5,6 +5,7 @@ import { HeaderLogo } from '@/app/assets/images/header-logo'
 import { ShoppingCart } from '@/shared/icons/shoppingcart'
 import { Heart } from '@/shared/icons/Heart'
 import { User } from '@/shared/icons/User'
+import { Link } from 'react-router-dom'
 
 export const Header = () => {
   return (
@@ -18,15 +19,15 @@ export const Header = () => {
       </div>
       <HeaderLogo />
       <div className={`${s.routes} df aic`}>
-        <button>
+        <Link to="/cart">
           <ShoppingCart />
-        </button>
-        <button>
+        </Link>
+        <Link to="/favorite">
           <Heart />
-        </button>
-        <button>
+        </Link>
+        <Link to="/">
           <User />
-        </button>
+        </Link>
       </div>
     </header>
   )

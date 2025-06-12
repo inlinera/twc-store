@@ -1,3 +1,4 @@
+import { CartPage } from '@/pages/cart'
 import { FavoritePage } from '@/pages/favorite'
 import { HomePage } from '@/pages/home'
 import { ProductPage } from '@/pages/product'
@@ -16,6 +17,7 @@ export const App = () => {
           <Route path="/" element={<HomePage />} />
           <Route path="/product/" element={<ProductPage />} />
           <Route path="/favorite" element={<FavoritePage />} />
+          <Route path="/cart" element={<CartPage />} />
         </Routes>
       </main>
     </>
