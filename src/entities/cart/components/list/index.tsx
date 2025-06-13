@@ -2,8 +2,14 @@ import s from './index.module.scss'
 import { CartItem } from '../item'
 import { observer } from 'mobx-react-lite'
 import { cart } from '@/shared/stores/cart'
+import { Button } from '@/shared/ui/button'
+import { ArrowLeft } from '@/shared/icons/ArrowLeft'
+import { useNavigate } from 'react-router-dom'
 
 export const CartList = observer(() => {
+  const {} = cart
+  const navigate = useNavigate()
+
   return (
     <ul className={`${s.list} df fdc`}>
       <h1>Корзина</h1>
@@ -13,9 +19,8 @@ export const CartList = observer(() => {
         <span>Количество</span>
         <span>Стоимость</span>
       </div>
-      {cart.items.length > 0 ? (
-        <>
-          {cart.items.map(item => (
+      {cart.items.length > 0
+        ? cart.items.map(item => (
             <CartItem
               key={item.id}
               id={item.id}
@@ -24,15 +29,14 @@ export const CartList = observer(() => {
               size={item.size}
               count={item.count}
             />
-          ))}
-          <div className={`${s.total} df aic jcsb`}>
-            <span>Итого:</span>
-            <span>{cart.getTotalPrice()} ₽</span>
-          </div>
-        </>
-      ) : (
-        'Вы можете добавлять продукты в корзину'
-      )}
+          ))
+        : 'Вы можете добавлять продукты в корзину'}
+      <div className={`${s.btns} df aic jcsb`}>
+        <Button variant="outlined" onClick={() => navigate('/')}>
+          <ArrowLeft /> Назад в магазин
+        </Button>
+        <Button variant="outlined">Обновить</Button>
+      </div>
     </ul>
   )
 })

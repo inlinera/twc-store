@@ -1,0 +1,26 @@
+.comment {
+  width: 100%;
+  gap: 10px;
+  border-radius: 3px;
+
+  h2 {
+    margin-bottom: 10px;
+  }
+
+  .input {
+    gap: 10px;
+
+    div {
+      gap: 5px;
+    }
+
+    textarea {
+      height: 100px;
+      padding: 10px;
+      font-size: clamp(13px, 2vw, 15px);
+      background-color: var(--el-color);
+      border-radius: 3px;
+      resize: none;
+    }
+  }
+}

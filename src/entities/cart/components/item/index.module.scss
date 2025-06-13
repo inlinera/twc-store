@@ -40,22 +40,7 @@
     }
   }
 
-  b {
-    font-size: clamp(12px, 1.1vw, 16px);
-
-    &.green {
-      color: #2db224;
-    }
-
-    &.red {
-      color: #ee5858;
-    }
-  }
-
-  button:nth-child(2) {
-    svg,
-    svg path {
-      stroke: var(--light-gray-color);
-    }
+  .counter {
+    max-width: max-content;
   }
 }

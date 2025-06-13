@@ -1,7 +1,10 @@
 import { FavoriteList } from '@/entities/favorite/components/list'
 import s from './index.module.scss'
+import { observer } from 'mobx-react-lite'
+import { states } from '@/shared/stores/states'
+import { useEffect } from 'react'
 
-const products = [
+export const products = [
   {
     title: 'Футболка OnlineStore',
     subtitle:
@@ -100,12 +103,23 @@ const products = [
   },
 ]
 
-export const FavoritePage = () => {
+export const FavoritePage = observer(() => {
+  const { setPath } = states
+
+  useEffect(() => {
+    setPath(['Избранное'])
+  }, [])
+
   return (
     <div className={`${s.favoritePage} df fdc`}>
       <h1>Избранное</h1>
-      <div className={`${s.info} dg aic`}><span>Продукт</span><span>Цена</span><span>Наличие</span><span>Действие</span></div>
+      <div className={`${s.info} dg aic`}>
+        <span>Продукт</span>
+        <span>Цена</span>
+        <span>Наличие</span>
+        <span>Действие</span>
+      </div>
       <FavoriteList products={products} />
     </div>
   )
-}
+})

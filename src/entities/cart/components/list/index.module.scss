@@ -1,9 +1,13 @@
 .list {
   width: 100%;
-  padding: 25px;
+  height: 100%;
+  padding: 30px 15px;
   background-color: var(--el-color);
   border-radius: 3px;
   gap: 20px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
 
   h1 {
     font-size: clamp(15px, 10vw, 25px);
@@ -14,5 +18,21 @@
     grid-template-columns: 3fr 1fr 1fr 1fr;
     text-transform: uppercase;
     font-size: clamp(12px, 1vw, 15px);
+  }
+
+  .btns {
+    margin-top: auto;
+    padding-top: 20px;
+
+    button {
+      max-width: max-content;
+      gap: 10px;
+      text-transform: uppercase;
+
+      svg,
+      svg path {
+        stroke: #2da5f3;
+      }
+    }
   }
 }

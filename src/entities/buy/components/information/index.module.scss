@@ -1,0 +1,39 @@
+.infoBuy {
+  width: 100%;
+  gap: clamp(10px, 2vw, 20px);
+
+  .inputRow {
+    position: relative;
+    width: 100%;
+    gap: clamp(5px, 1vw, 10px);
+
+    .optional {
+      gap: clamp(3px, 0.5vw, 5px);
+
+      span {
+        color: var(--light-gray-color);
+        font-size: clamp(12px, 1.5vw, 14px);
+      }
+    }
+
+    div {
+      width: 100%;
+      gap: clamp(5px, 1vw, 10px);
+    }
+
+    .input {
+      background-color: var(--el-color);
+      font-size: clamp(14px, 1.5vw, 16px);
+      padding: clamp(8px, 1vw, 12px);
+      border-radius: 3px;
+    }
+
+    .error {
+      position: absolute;
+      bottom: -10px;
+      color: red;
+      font-size: clamp(10px, 1.2vw, 12px);
+      margin-top: clamp(2px, 0.5vw, 5px);
+    }
+  }
+}

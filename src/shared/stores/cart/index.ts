@@ -52,11 +52,11 @@ class CartStore {
     }
   }
 
-  getItemMaxCount = (product: IProduct, color: string, size: string): number => {
+  getItemMaxCount = (product: IProduct, color: string, size: string) => {
     return product.specifications.color[color as keyof typeof product.specifications.color].size[size]
   }
 
-  getAvailableQuantity = (product: IProduct, color: string, size: string): number => {
+  getAvailableQuantity = (product: IProduct, color: string, size: string) => {
     const maxCount = this.getItemMaxCount(product, color, size)
     const existingItem = this.items.find(
       item => item.product.title === product.title && item.color === color && item.size === size
@@ -64,8 +64,28 @@ class CartStore {
     return maxCount - (existingItem?.count || 0)
   }
 
-  getTotalPrice = (): number => {
-    return this.items.reduce((total, item) => total + item.product.price * item.count, 0)
+  getTotalPrice = () => {
+    const subtotal = this.items.reduce((total, item) => {
+      const itemTotal = item.product.oldPrice
+        ? item.product.oldPrice * item.count
+        : item.product.price * item.count
+      return total + itemTotal
+    }, 0)
+
+    const discountedTotal = this.items.reduce((total, item) => {
+      return total + item.product.price * item.count
+    }, 0)
+
+    const discount = subtotal - discountedTotal
+    const tax = 100 // Фиксированный налог
+    const total = discountedTotal + tax
+
+    return {
+      subtotal,
+      discount,
+      tax,
+      total,
+    }
   }
 }
 

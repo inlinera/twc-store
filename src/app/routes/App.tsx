@@ -1,3 +1,4 @@
+import { BuyPage } from '@/pages/buy'
 import { CartPage } from '@/pages/cart'
 import { FavoritePage } from '@/pages/favorite'
 import { HomePage } from '@/pages/home'
@@ -18,6 +19,7 @@ export const App = () => {
           <Route path="/product/" element={<ProductPage />} />
           <Route path="/favorite" element={<FavoritePage />} />
           <Route path="/cart" element={<CartPage />} />
+          <Route path="/order/buy" element={<BuyPage />} />
         </Routes>
       </main>
     </>
