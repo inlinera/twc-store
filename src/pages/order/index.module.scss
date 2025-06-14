@@ -1,0 +1,40 @@
+.orderPage {
+  position: relative;
+  width: 70%;
+  gap: 20px;
+
+  h1 {
+    font-size: clamp(17px, 2vw, 24px);
+    font-weight: 600;
+  }
+
+  p {
+    color: var(--light-gray-color);
+  }
+
+  .inputs {
+    gap: 18px;
+
+    .inputTitle {
+      position: relative;
+      width: 100%;
+      gap: 5px;
+
+      input {
+        background-color: var(--el-color);
+        border-radius: 3px;
+      }
+    }
+  }
+
+  .info {
+    gap: 10px;
+    font-size: clamp(13px, 1vw, 15px);
+  }
+
+  button {
+    width: max-content;
+    gap: 10px;
+    text-transform: uppercase;
+  }
+}
