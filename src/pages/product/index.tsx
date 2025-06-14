@@ -5,6 +5,7 @@ import s from './index.module.scss'
 import { observer } from 'mobx-react-lite'
 import { states } from '@/shared/stores/states'
 import { useEffect } from 'react'
+import { Breadcrumbs } from '@/shared/ui/breadcrumbs'
 
 const product = {
   title: 'Футболка OnlineStore',
@@ -63,9 +64,12 @@ export const ProductPage = observer(() => {
   }, [])
 
   return (
-    <div className={`${s.productPage} df fdc`}>
-      <MainProductBlock {...product} />
-      <ProductInfoBlock {...product} />
+    <div className="df fdc">
+      <Breadcrumbs />
+      <div className={`${s.productPage} df fdc`}>
+        <MainProductBlock {...product} />
+        <ProductInfoBlock {...product} />
+      </div>
     </div>
   )
 })

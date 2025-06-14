@@ -6,6 +6,7 @@ import { products } from '../favorite'
 import { observer } from 'mobx-react-lite'
 import { states } from '@/shared/stores/states'
 import { useEffect } from 'react'
+import { Breadcrumbs } from '@/shared/ui/breadcrumbs'
 
 export const CartPage = observer(() => {
   const { items } = cart
@@ -16,9 +17,12 @@ export const CartPage = observer(() => {
   }, [])
 
   return (
-    <div className={`${s.cartPage} dg`}>
-      <CartList />
-      <CartBuyBlock />
+    <div className="df fdc" style={{ width: '100%' }}>
+      <Breadcrumbs />
+      <div className={`${s.cartPage} dg`}>
+        <CartList />
+        <CartBuyBlock />
+      </div>
     </div>
   )
 })

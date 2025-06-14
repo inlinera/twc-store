@@ -3,6 +3,7 @@ import s from './index.module.scss'
 import { observer } from 'mobx-react-lite'
 import { states } from '@/shared/stores/states'
 import { useEffect } from 'react'
+import { Breadcrumbs } from '@/shared/ui/breadcrumbs'
 
 export const products = [
   {
@@ -111,15 +112,18 @@ export const FavoritePage = observer(() => {
   }, [])
 
   return (
-    <div className={`${s.favoritePage} df fdc`}>
-      <h1>Избранное</h1>
-      <div className={`${s.info} dg aic`}>
-        <span>Продукт</span>
-        <span>Цена</span>
-        <span>Наличие</span>
-        <span>Действие</span>
+    <div className="df fdc">
+      <Breadcrumbs />
+      <div className={`${s.favoritePage} df fdc`}>
+        <h1>Избранное</h1>
+        <div className={`${s.info} dg aic`}>
+          <span>Продукт</span>
+          <span>Цена</span>
+          <span>Наличие</span>
+          <span>Действие</span>
+        </div>
+        <FavoriteList products={products} />
       </div>
-      <FavoriteList products={products} />
     </div>
   )
 })

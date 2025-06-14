@@ -5,9 +5,10 @@
   width: calc(100% - var(--scrollbar-width));
   height: clamp(40px, 5vw, 50px);
   padding: clamp(10px, 2vw, 20px);
+  font-family: 'Open Sans', sans-serif;
   justify-content: space-between;
   z-index: 999;
-  background-color: #fff;
+  background-color: var(--el-color);
   display: flex;
 
   .location {

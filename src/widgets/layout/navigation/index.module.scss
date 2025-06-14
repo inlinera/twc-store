@@ -8,7 +8,8 @@
     background-color: var(--purple-color) !important;
     color: #fff;
 
-    font-family: 'Epilogue', serif;
+    font-family: 'Nunito Sans', sans-serif;
+    font-weight: 600;
 
     &::placeholder {
       color: #fff;
@@ -27,10 +28,10 @@
       gap: clamp(3px, 0.5vw, 5px);
       transition: all 0.3s;
       display: flex;
+      font-size: 14px;
       align-items: center;
       white-space: nowrap;
-      font-family: 'Public Sans', serif;
-
+      font-family: 'Open Sans', sans-serif;
       svg,
       svg path {
         stroke: var(--light-gray-color) !important;

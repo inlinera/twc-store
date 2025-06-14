@@ -6,6 +6,7 @@ import { observer } from 'mobx-react-lite'
 import { states } from '@/shared/stores/states'
 import { useEffect } from 'react'
 import { CommentInfo } from '@/entities/buy/components/comment-info'
+import { Breadcrumbs } from '@/shared/ui/breadcrumbs'
 
 export const BuyPage = observer(() => {
   const { setPath } = states
@@ -15,14 +16,17 @@ export const BuyPage = observer(() => {
   }, [])
 
   return (
-    <div className={`${s.buyPage} dg`}>
-      <div className={`${s.buyInfo} df fdc`}>
-        <h1>Информация для оформления заказа</h1>
-        <InformationBuy />
-        <CardPayBlock />
+    <div className="df fdc">
+      <Breadcrumbs />
+      <div className={`${s.buyPage} dg`}>
+        <div className={`${s.buyInfo} df fdc`}>
+          <h1>Информация для оформления заказа</h1>
+          <InformationBuy />
+          <CardPayBlock />
+        </div>
+        <CartBuyBlock />
+        <CommentInfo />
       </div>
-      <CartBuyBlock />
-      <CommentInfo />
     </div>
   )
 })

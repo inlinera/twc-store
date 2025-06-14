@@ -6,12 +6,18 @@ import { ShoppingCart } from '@/shared/icons/shoppingcart'
 import { Heart } from '@/shared/icons/Heart'
 import { User } from '@/shared/icons/User'
 import { Link } from 'react-router-dom'
+import { observer } from 'mobx-react-lite'
+import { states } from '@/shared/stores/states'
 
-export const Header = () => {
+export const Header = observer(() => {
+  const { setTheme } = states
+
   return (
     <header className={`${s.header} df aic`}>
       <div className={`${s.location} df aic`}>
-        <Lamp />
+        <button onClick={setTheme}>
+          <Lamp />
+        </button>
         <div className="df aic">
           <MapPinArea />
           <strong>Москва</strong>
@@ -31,4 +37,4 @@ export const Header = () => {
       </div>
     </header>
   )
-}
+})

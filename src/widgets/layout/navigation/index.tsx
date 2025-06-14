@@ -7,7 +7,6 @@ import { Headphones } from '@/shared/icons/headphones'
 import { Info } from '@/shared/icons/info'
 import { CaretDown } from '@/shared/icons/caretdown'
 import type { ILinkButton } from '@/shared/interfaces/ILinkButton'
-import { Breadcrumbs } from '@/shared/ui/breadcrumbs'
 
 const btns: ILinkButton[] = [
   { title: 'Все категории', path: '/', icon: <CaretDown /> },
@@ -48,7 +47,6 @@ export const Navigation = () => {
           )
         })}
       </div>
-      <Breadcrumbs />
     </nav>
   )
 }
