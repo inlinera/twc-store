@@ -1,0 +1,113 @@
+.progressContainer {
+  width: 100%;
+  padding: clamp(20px, 2vw, 40px) clamp(20px, 5vw, 100px);
+  margin-bottom: 50px;
+  position: relative;
+
+  .progressBar {
+    width: 100%;
+    height: clamp(8px, 5vw, 14px);
+    background-color: #b7baff;
+    position: relative;
+    border-radius: 2px;
+
+    .progressFill {
+      height: 100%;
+      background-color: var(--purple-color);
+      border-radius: 2px;
+      transition: width 0.3s ease;
+    }
+
+    .stepCircle {
+      width: clamp(25px, 3vw, 35px);
+      height: clamp(25px, 3vw, 35px);
+      border-radius: 50%;
+      border: 2px solid var(--purple-color);
+      position: absolute;
+      top: 50%;
+      transform: translate(-50%, -50%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background-color: var(--el-color);
+      transition: background-color 0.3s ease;
+      z-index: 1;
+      box-shadow: 0px 0px 5px var(--el-color);
+
+      &.withCheck {
+        &::after {
+          content: '';
+          width: clamp(13px, 1vw, 18px);
+          height: clamp(8px, 0.5vw, 14px);
+          border-left: 2px solid white;
+          border-bottom: 2px solid white;
+          transform: rotate(-45deg) translate(-50%, -50%);
+          opacity: 0;
+          transition: opacity 0.3s ease;
+          position: absolute;
+          top: clamp(25%, 10vw, 10%);
+          left: 50%;
+        }
+
+        &[style*='var(--purple-color)']::after {
+          opacity: 1;
+        }
+      }
+    }
+  }
+
+  .stepsLabels {
+    display: flex;
+    justify-content: space-between;
+    margin-top: clamp(16px, 2vw, 32px);
+    position: relative;
+    width: 100%;
+
+    .stepLabel {
+      font-size: clamp(14px, 1.2vw, 18px);
+      gap: clamp(5px, 0.5vw, 10px);
+      color: var(--default);
+      text-align: center;
+      transition: opacity 0.3s ease;
+      position: absolute;
+      transform: translateX(-50%);
+      width: max-content;
+
+      svg {
+        width: clamp(28px, 3vw, 32px);
+        height: clamp(28px, 3vw, 32px);
+
+        path {
+          stroke: var(--purple-color);
+          transition: stroke 0.3s ease;
+        }
+      }
+
+      &:nth-child(1) {
+        left: 0;
+
+        svg,
+        svg path {
+          stroke: #2db224;
+        }
+      }
+
+      &:nth-child(2) {
+        left: 33.33%;
+      }
+
+      &:nth-child(3) {
+        left: 66.66%;
+      }
+
+      &:nth-child(4) {
+        left: 100%;
+
+        svg,
+        svg path {
+          stroke: #2db224;
+        }
+      }
+    }
+  }
+}

@@ -3,6 +3,7 @@ import { CartPage } from '@/pages/cart'
 import { FavoritePage } from '@/pages/favorite'
 import { HomePage } from '@/pages/home'
 import { OrderPage } from '@/pages/order'
+import { TrackOrder } from '@/pages/order-track'
 import { ProductPage } from '@/pages/product'
 import { Header } from '@/widgets/layout/header'
 import { Navigation } from '@/widgets/layout/navigation'
@@ -22,6 +23,7 @@ export const App = () => {
           <Route path="/cart" element={<CartPage />} />
           <Route path="/order/buy" element={<BuyPage />} />
           <Route path="/order" element={<OrderPage />} />
+          <Route path="order/track" element={<TrackOrder />} />
         </Routes>
       </main>
     </>

@@ -1,0 +1,42 @@
+.item {
+  gap: 10px;
+
+  .svg {
+    width: 48px;
+    height: 48px;
+    border-radius: 3px;
+  }
+
+  .green {
+    background-color: #eaf7e9;
+    border: 1px solid #d5f0d3;
+
+    svg,
+    svg path {
+      stroke: #2db224;
+    }
+  }
+
+  .blue {
+    background-color: #eaf6fe;
+    border: 1px solid #d5edfd;
+
+    svg,
+    svg path {
+      stroke: #2da5f3;
+    }
+  }
+
+  .meta {
+    gap: 10px;
+
+    h4 {
+      font-size: clamp(14px, 2vw, 16px);
+    }
+
+    p {
+      font-size: clamp(13px, 2vw, 15px);
+      color: var(--light-gray-color);
+    }
+  }
+}

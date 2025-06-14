@@ -1,0 +1,24 @@
+.orderInfo {
+  width: 100%;
+  padding: 20px;
+  border-radius: 3px;
+  background-color: var(--purple-color);
+  color: #fff;
+
+  h2 {
+    font-size: clamp(18px, 2vw, 21px);
+    margin-bottom: 5px;
+  }
+
+  div {
+    gap: 10px;
+
+    span {
+      color: var(--gray-color);
+    }
+  }
+
+  b {
+    font-size: clamp(17px, 2vw, 20px);
+  }
+}
