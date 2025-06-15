@@ -6,6 +6,7 @@ import { ProductCarousel } from '@/entities/home/product-carousel'
 import { products } from '../favorite'
 import { SeasonalDiscounts } from '@/entities/home/seasonal-dicsounts'
 import { ProductPreview } from '@/entities/home/product-preview'
+import { HomeInfo } from '@/entities/home/information'
 
 export const HomePage = observer(() => {
   const { setPath } = states
@@ -15,7 +16,7 @@ export const HomePage = observer(() => {
   }, [])
 
   return (
-    <div className={`${s.homePage}`}>
+    <div className={`${s.homePage} df fdc`}>
       <div className={`${s.upperBlock} dg`}>
         <ProductCarousel products={products} />
         <div className={`${s.goods} df fdc`}>
@@ -23,6 +24,7 @@ export const HomePage = observer(() => {
           <ProductPreview {...products[1]} />
         </div>
       </div>
+      <HomeInfo />
     </div>
   )
 })
