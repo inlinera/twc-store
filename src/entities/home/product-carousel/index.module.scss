@@ -1,7 +1,7 @@
 .carousel {
   position: relative;
-  width: 60%;
-  height: clamp(300px, 25vw, 800px);
+  width: 100%;
+  height: inherit;
   display: flex;
   background-color: var(--el-color);
   border-radius: 8px;
@@ -19,6 +19,7 @@
     padding: 40px;
     z-index: 1;
     transition: opacity 0.5s;
+    gap: 20px;
     user-select: none;
 
     &::before {
@@ -38,12 +39,17 @@
       font-size: clamp(24px, 20vw, 32px);
       font-weight: 600;
       color: var(--default);
-      margin-bottom: 20px;
     }
 
     .subtitle {
       font-size: 18px;
       color: var(--light-gray-color);
+    }
+
+    button {
+      width: max-content;
+      text-transform: uppercase;
+      gap: 5px;
     }
   }
 

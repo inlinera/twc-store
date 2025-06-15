@@ -1,3 +1,14 @@
 .homePage {
   width: 100%;
+  font-family: 'Open Sans', sans-serif;
+
+  .upperBlock {
+    height: clamp(450px, 25vw, 800px);
+    grid-template-columns: 2fr 1fr;
+    gap: 20px;
+
+    .goods {
+      gap: 20px;
+    }
+  }
 }

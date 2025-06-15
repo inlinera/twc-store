@@ -2,6 +2,8 @@ import { useState } from 'react'
 import type { IProduct } from '@/shared/interfaces/IProduct'
 import s from './index.module.scss'
 import { useSwipeable } from 'react-swipeable'
+import { Button } from '@/shared/ui/button'
+import { ArrowRight } from '@/shared/icons/ArrowRight'
 
 interface ProductCarouselProps {
   products: IProduct[]
@@ -53,6 +55,9 @@ export const ProductCarousel = ({ products }: ProductCarouselProps) => {
       <div className={s.leftBlock}>
         <h2 className={s.title}>{currentProduct.title}</h2>
         <p className={s.subtitle}>{currentProduct.title}. Мода и стиль</p>
+        <Button>
+          купить сейчас <ArrowRight />
+        </Button>
       </div>
       <div
         className={s.rightBlock}
