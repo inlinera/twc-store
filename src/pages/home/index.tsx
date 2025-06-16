@@ -7,6 +7,7 @@ import { products } from '../favorite'
 import { SeasonalDiscounts } from '@/entities/home/seasonal-dicsounts'
 import { ProductPreview } from '@/entities/home/product-preview'
 import { HomeInfo } from '@/entities/home/information'
+import { HomeProduct } from '@/entities/home/product'
 
 export const HomePage = observer(() => {
   const { setPath } = states
@@ -25,6 +26,11 @@ export const HomePage = observer(() => {
         </div>
       </div>
       <HomeInfo />
+      <div className={`${s.productsList} dg`}>
+        {Array.from({ length: 8 }, () => (
+          <HomeProduct {...products[0]} />
+        ))}
+      </div>
     </div>
   )
 })

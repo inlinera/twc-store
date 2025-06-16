@@ -12,4 +12,9 @@
       gap: 20px;
     }
   }
+
+  .productsList {
+    gap: 1px;
+    grid-template-columns: repeat(4, 1fr);
+  }
 }

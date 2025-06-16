@@ -39,7 +39,7 @@ const Divider = () => (
       width: '1px',
       height: '80%',
       backgroundColor: 'var(--purple-color)',
-      margin: '0 2vw',
+      margin: '0 1vw',
     }}
   />
 )
