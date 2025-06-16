@@ -39,7 +39,7 @@ export const CartItem = observer(({ id, product, color, size, count }: CartItemP
         {product.oldPrice && <s>{product.oldPrice} ₽</s>} <span>{product.price} ₽</span>
       </div>
       <div className={s.counter}>
-        <Counter value={count} onChange={handleCountChange} maxValue={maxValue} />
+        <Counter value={count} onChange={handleCountChange} minValue={1} maxValue={maxValue} />
       </div>
 
       <div className="df aic" style={{ gap: 5 }}>

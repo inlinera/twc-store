@@ -2,14 +2,15 @@ import s from './index.module.scss'
 import { useEffect } from 'react'
 
 interface CounterProps {
+  minValue?: number
   maxValue: number
   value: number
   onChange: (value: number) => void
 }
 
-export const Counter = ({ maxValue, value, onChange }: CounterProps) => {
+export const Counter = ({ minValue = 0, maxValue, value, onChange }: CounterProps) => {
   const handleDecrement = () => {
-    if (value > 0) {
+    if (value > minValue) {
       onChange(value - 1)
     }
   }
@@ -28,7 +29,7 @@ export const Counter = ({ maxValue, value, onChange }: CounterProps) => {
 
   return (
     <div className={s.counter}>
-      <button className={s.button} onClick={handleDecrement} disabled={value === 0}>
+      <button className={s.button} onClick={handleDecrement} disabled={value === minValue}>
         -
       </button>
       <span className={s.value}>{value}</span>

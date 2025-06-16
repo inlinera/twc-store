@@ -13,8 +13,14 @@
     }
   }
 
-  .productsList {
+  .products {
+    width: 100%;
     gap: 1px;
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: 1fr 3fr;
+
+    .productsList {
+      gap: 1px;
+      grid-template-columns: repeat(4, 1fr);
+    }
   }
 }

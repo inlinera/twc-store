@@ -11,19 +11,23 @@
   background-color: var(--el-color);
   display: flex;
 
-  .location {
-    gap: clamp(5px, 1vw, 10px);
+  a,
+  button {
+    svg,
+    svg path {
+      color: var(--default);
+    }
+  }
 
-    div {
-      gap: clamp(3px, 0.5vw, 5px);
+  .location {
+    gap: 10px;
+
+    button {
+      gap: 5px;
     }
   }
 
   .routes {
     gap: clamp(10px, 2vw, 15px);
-
-    a {
-      color: var(--default);
-    }
   }
 }

@@ -18,10 +18,10 @@ export const Header = observer(() => {
         <button onClick={setTheme}>
           <Lamp />
         </button>
-        <div className="df aic">
+        <button className="df aic">
           <MapPinArea />
           <strong>Москва</strong>
-        </div>
+        </button>
       </div>
       <HeaderLogo />
       <div className={`${s.routes} df aic`}>
