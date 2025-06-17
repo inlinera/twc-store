@@ -1,5 +1,4 @@
-import { ProductInfoBlock } from '@/entities/product/components/info-block'
-import { MainProductBlock } from '@/entities/product/components/main-block'
+import { ProductInfoBlock, MainProductBlock } from '@/entities/product/'
 import type { IProduct } from '@/shared/interfaces/IProduct'
 import s from './index.module.scss'
 import { observer } from 'mobx-react-lite'

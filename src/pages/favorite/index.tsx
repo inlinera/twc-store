@@ -1,4 +1,4 @@
-import { FavoriteList } from '@/entities/favorite/components/list'
+import { FavoriteList } from '@/entities/favorite/'
 import s from './index.module.scss'
 import { observer } from 'mobx-react-lite'
 import { states } from '@/shared/stores/states'

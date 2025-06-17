@@ -1,7 +1,5 @@
-import { OrderInfo } from '@/entities/order-track/components/main-block/info'
 import s from './index.module.scss'
-import { OrderProgressBar } from '@/entities/order-track/components/main-block/progress'
-import { OrderTrackActivity } from '@/entities/order-track/components/main-block/activity'
+import { OrderProgressBar, OrderTrackActivity, OrderInfo } from '@/entities/order-track/'
 import { Breadcrumbs } from '@/shared/ui/breadcrumbs'
 
 export const TrackOrder = () => {

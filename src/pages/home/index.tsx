@@ -2,13 +2,15 @@ import { observer } from 'mobx-react-lite'
 import s from './index.module.scss'
 import { states } from '@/shared/stores/states'
 import { useEffect } from 'react'
-import { ProductCarousel } from '@/entities/home/product-carousel'
+import {
+  ProductCarousel,
+  HomeBigProduct,
+  HomeProduct,
+  HomeInfo,
+  ProductPreview,
+  SeasonalDiscounts,
+} from '@/entities/home/'
 import { products } from '../favorite'
-import { SeasonalDiscounts } from '@/entities/home/seasonal-dicsounts'
-import { ProductPreview } from '@/entities/home/product-preview'
-import { HomeInfo } from '@/entities/home/information'
-import { HomeProduct } from '@/entities/home/product'
-import { HomeBigProduct } from '@/entities/home/big-product'
 
 export const HomePage = observer(() => {
   const { setPath } = states
