@@ -8,22 +8,27 @@ import { Button } from '@/shared/ui/button'
 import { ShoppingCart } from '@/shared/icons/shoppingcart'
 import { Heart } from '@/shared/icons/Heart'
 import { Eye } from '@/shared/icons/Eye'
-import { cart } from '@/shared/stores/cart'
+import { cart } from '@/shared/stores/local/cart'
 import { useNavigate } from 'react-router-dom'
 import { calculateDiscount } from '@/shared/functions/calculateDiscount'
+import { favorite } from '@/shared/stores/local/favorite'
 
 export const HomeBigProduct = observer(({ oldPrice, ...props }: IProduct) => {
   const { theme } = states
   const { items } = cart
+  const { addItem, removeItem, items: favoriteItems } = favorite
   const navigate = useNavigate()
 
   const discount = calculateDiscount(oldPrice || 0, props.price)
-  const isInCart = items.some(item => item.product.title === props.title)
+
+  const isInCart = items.some(item => item._id === props._id)
+  const isInFavorite = favoriteItems.some(item => item._id === props._id)
 
   return (
     <div
       className={`${s.bigProduct} df fdc`}
       style={theme === 'dark' ? { border: '1px solid var(--purple-color)' } : {}}
+      onClick={() => navigate(`/product/${props._id}`)}
     >
       {discount > 0 && <div className={`${s.discount} df aic jcc`}>{discount}%</div>}
       <div className={`${s.hot} df aic jcc`}>hot</div>
@@ -34,14 +39,14 @@ export const HomeBigProduct = observer(({ oldPrice, ...props }: IProduct) => {
         <ProductPrice oldPrice={oldPrice} price={props.price} />
         <p>{props.title}. Мода и стиль.</p>
       </div>
-      <div className="dg aic">
-        <Button>
-          <Heart />
+      <div className="dg aic" onClick={e => e.stopPropagation()}>
+        <Button onClick={() => (isInFavorite ? removeItem(props._id) : addItem(props))}>
+          <Heart filled={isInFavorite} />
         </Button>
-        <Button onClick={() => (isInCart ? navigate('/cart') : navigate('/product'))}>
+        <Button onClick={() => (isInCart ? navigate('/cart') : navigate(`/product/${props._id}`))}>
           <ShoppingCart /> {isInCart ? 'добавлено' : 'добавить'}
         </Button>
-        <Button onClick={() => navigate('/product')}>
+        <Button onClick={() => navigate(`/product/${props._id}`)}>
           <Eye />
         </Button>
       </div>

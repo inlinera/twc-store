@@ -1,50 +1,44 @@
-import type { IProduct } from '@/shared/interfaces/IProduct'
 import s from './index.module.scss'
 import { observer } from 'mobx-react-lite'
 import { XCircle } from '@/shared/icons/XCircle'
 import { Counter } from '@/shared/ui/counter'
-import { cart } from '@/shared/stores/cart'
+import { cart, type CartItem as CartItemType } from '@/shared/stores/local/cart'
 import { isProductAvailable } from '@/shared/functions/isProductAvailable'
+import { Link } from 'react-router-dom'
 
-interface CartItemProps {
-  id: string
-  product: IProduct
-  color: string
-  size: string
-  count: number
-}
+export const CartItem = observer(({ color, size, count, ...product }: CartItemType) => {
+  const { updateItemCount, removeItem, getItemMaxCount } = cart
 
-export const CartItem = observer(({ id, product, color, size, count }: CartItemProps) => {
-  const handleCountChange = (newCount: number) => {
-    cart.updateItemCount(id, newCount)
-  }
-
-  const handleRemove = () => {
-    cart.removeItem(id)
-  }
-
-  const maxValue = cart.getItemMaxCount(product, color, size)
+  const maxValue = getItemMaxCount(product, color, size) ?? 0
   const isAvailable = isProductAvailable(product, color, size)
 
   return (
     <li className={`${s.item} dg aic`}>
       <div className={`${s.title} df aic`}>
-        <button onClick={handleRemove} className={!isAvailable ? s.disabled : ''} disabled={!isAvailable}>
+        <button
+          onClick={() => removeItem(product._id, color, size)}
+          className={!isAvailable ? s.disabled : ''}
+          disabled={!isAvailable}
+        >
           <XCircle />
         </button>
-        <img src={product.images[0]} alt={`${product.brand} Image`} />
-        <h3>{product.title}</h3>
+        <Link to={`/product/${product._id}`}>
+          <img src={product.images[0]} alt={`${product.brand} Image`} />
+          <h3>{product.title}</h3>
+        </Link>
       </div>
       <div className={`${s.price} df aic`}>
         {product.oldPrice && <s>{product.oldPrice} ₽</s>} <span>{product.price} ₽</span>
       </div>
       <div className={s.counter}>
-        <Counter value={count} onChange={handleCountChange} minValue={1} maxValue={maxValue} />
+        <Counter
+          onChange={newCount => updateItemCount(product._id, newCount)}
+          value={count}
+          minValue={1}
+          maxValue={maxValue}
+        />
       </div>
-
-      <div className="df aic" style={{ gap: 5 }}>
-        {count * product.price} ₽
-      </div>
+      <div>{product.price * count} ₽</div>
     </li>
   )
 })

@@ -1,17 +1,18 @@
 import { CartList, CartBuyBlock } from '@/entities/cart/'
 import s from './index.module.scss'
-import { cart } from '@/shared/stores/cart'
 import { observer } from 'mobx-react-lite'
 import { states } from '@/shared/stores/states'
 import { useEffect } from 'react'
 import { Breadcrumbs } from '@/shared/ui/breadcrumbs'
+import { cart } from '@/shared/stores/local/cart'
 
 export const CartPage = observer(() => {
   const { items } = cart
-  const { setPath } = states
+  const { setPath, setBuyInfo } = states
 
   useEffect(() => {
     setPath(['Корзина'])
+    setBuyInfo(null)
   }, [])
 
   return (
@@ -19,7 +20,7 @@ export const CartPage = observer(() => {
       <Breadcrumbs />
       <div className={`${s.cartPage} dg`}>
         <CartList />
-        <CartBuyBlock />
+        <CartBuyBlock products={items} />
       </div>
     </div>
   )

@@ -15,6 +15,12 @@
       }
     }
 
+    a {
+      display: flex;
+      gap: 10px;
+      color: var(--default);
+    }
+
     .disabled {
       svg,
       svg path {

@@ -1,35 +1,32 @@
-import { cart } from '@/shared/stores/cart'
+import { cart } from '@/shared/stores/local/cart'
 import s from './index.module.scss'
 import { observer } from 'mobx-react-lite'
 import { Button } from '@/shared/ui/button'
 import { ArrowRight } from '@/shared/icons/ArrowRight'
-import type { IProduct } from '@/shared/interfaces/IProduct'
-import { Link } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
+import { states } from '@/shared/stores/states'
+import { BuyList } from './item'
+import type { CartItem } from '@/shared/stores/local/cart'
 
 interface CartBuyBlockProps {
-  products?: IProduct[]
+  products?: CartItem[] | null
 }
 
-export const CartBuyBlock = observer(({ products }: CartBuyBlockProps) => {
-  const totals = cart.getTotalPrice()
+export const CartBuyBlock = observer(({ products = null }: CartBuyBlockProps) => {
+  const { setBuyInfo } = states
+  const { getTotalPrice } = cart
+  const navigate = useNavigate()
+  const totals = getTotalPrice()
+
+  const handleBuy = () => {
+    setBuyInfo(products)
+    navigate('/order/buy')
+  }
 
   return (
     <div className={`${s.block} df fdc`}>
       <h2>{products ? 'Заказ' : 'Итого'}</h2>
-      {products && (
-        <ul className="df fdc">
-          {products.map((p, id) => (
-            <li>
-              <Link to="/" key={id}>
-                <img src={p.images[0]} alt={p.brand} />
-                <div className="df fdc">
-                  <h3>{p.title}</h3> <p>numx * {p.price}</p>
-                </div>
-              </Link>
-            </li>
-          ))}
-        </ul>
-      )}
+      <BuyList />
       <div className={s.row}>
         <p>Продуктов на</p>
         <span>{totals.subtotal} ₽</span>
@@ -50,7 +47,7 @@ export const CartBuyBlock = observer(({ products }: CartBuyBlockProps) => {
         <p>Итого</p>
         <b>{totals.total} ₽</b>
       </div>
-      <Button>
+      <Button onClick={handleBuy}>
         {products ? 'Оформить заказ' : 'Оплатить и заказать'} <ArrowRight />
       </Button>
     </div>

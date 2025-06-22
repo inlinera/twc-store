@@ -1,6 +1,7 @@
 export type ColorT = 'perple' | 'black' | 'white'
 
 export interface IProduct {
+  _id: string
   /** Название товара (отображается на витрине, в карточке и т.д.) */
   title: string
   /** Краткое описание или подзаголовок товара */

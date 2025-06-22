@@ -4,6 +4,7 @@
   background-color: var(--el-color);
   border-radius: 3px;
   gap: 20px;
+  font-family: 'Open Sans', serif;
 
   h1 {
     font-size: clamp(15px, 10vw, 25px);
@@ -11,6 +12,7 @@
   }
 
   .info {
+    width: 100%;
     grid-template-columns: 3fr 1fr 1fr 1fr;
     text-transform: uppercase;
     font-size: clamp(12px, 1vw, 15px);

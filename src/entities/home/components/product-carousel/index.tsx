@@ -53,8 +53,8 @@ export const ProductCarousel = ({ products }: ProductCarouselProps) => {
       {...swipeHandlers}
     >
       <div className={s.leftBlock}>
-        <h2 className={s.title}>{currentProduct.title}</h2>
-        <p className={s.subtitle}>{currentProduct.title}. Мода и стиль</p>
+        <h2 className={s.title}>{currentProduct?.title}</h2>
+        <p className={s.subtitle}>{currentProduct?.title}. Мода и стиль</p>
         <Button>
           купить сейчас <ArrowRight />
         </Button>
@@ -63,7 +63,7 @@ export const ProductCarousel = ({ products }: ProductCarouselProps) => {
         className={s.rightBlock}
         style={
           {
-            backgroundImage: `url(${currentProduct.images[0]})`,
+            backgroundImage: `url(${currentProduct?.images[0]})`,
           } as React.CSSProperties
         }
       />
@@ -72,7 +72,7 @@ export const ProductCarousel = ({ products }: ProductCarouselProps) => {
           className={`${s.rightBlock} ${s.nextBlock}`}
           style={
             {
-              backgroundImage: `url(${nextProduct.images[0]})`,
+              backgroundImage: `url(${nextProduct?.images[0]})`,
             } as React.CSSProperties
           }
         />
@@ -82,7 +82,7 @@ export const ProductCarousel = ({ products }: ProductCarouselProps) => {
           className={`${s.rightBlock} ${s.prevBlock}`}
           style={
             {
-              backgroundImage: `url(${prevProduct.images[0]})`,
+              backgroundImage: `url(${prevProduct?.images[0]})`,
             } as React.CSSProperties
           }
         />

@@ -12,7 +12,7 @@ export const MainProductBlock = ({ ...props }: IProduct) => {
       <div className="df fdc">
         <ProductRating />
         <ProductInfo {...props} />
-        <ProductParams product={props} />
+        <ProductParams {...props} />
       </div>
     </div>
   )

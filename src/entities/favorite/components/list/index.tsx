@@ -1,17 +1,16 @@
-import type { IProduct } from '@/shared/interfaces/IProduct'
 import s from './index.module.scss'
 import { FavoriteItem } from '../item'
+import { favorite } from '@/shared/stores/local/favorite'
+import { observer } from 'mobx-react-lite'
 
-interface FavoriteListProps {
-  products?: IProduct[]
-}
+export const FavoriteList = observer(() => {
+  const { items } = favorite
 
-export const FavoriteList = ({ products }: FavoriteListProps) => {
   return (
     <ul className={`${s.list} df fdc`}>
-      {products
-        ? products.map((p, id) => <FavoriteItem {...p} key={id} />)
+      {items.length > 0
+        ? items.map((p, id) => <FavoriteItem {...p} key={id} />)
         : 'Вы можете добавлять продукты в избранное'}
     </ul>
   )
-}
+})

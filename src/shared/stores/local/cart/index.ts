@@ -1,79 +1,83 @@
-import { makeAutoObservable } from 'mobx'
+import { action, makeObservable } from 'mobx'
 import type { IProduct } from '@/shared/interfaces/IProduct'
+import { CommonStore, commonOptions } from '../.common'
 
-interface CartItem {
-  id: string
-  product: IProduct
+export interface CartItem extends IProduct {
   color: string
   size: string
   count: number
 }
 
-class CartStore {
-  items: CartItem[] = []
+const CART_STORAGE_KEY = 'twc-cart'
 
+const options = {
+  updateItemCount: action,
+  getItemMaxCount: action,
+  getAvailableQuantity: action,
+  ...commonOptions,
+}
+
+class CartStore extends CommonStore<CartItem> {
   constructor() {
-    makeAutoObservable(this, {
-      addItem: true,
-      removeItem: true,
-      updateItemCount: true,
-      getItemMaxCount: true,
-      getAvailableQuantity: true,
-      getTotalPrice: true,
-    })
+    super(CART_STORAGE_KEY)
+    makeObservable(this, options)
   }
 
   addItem = (product: IProduct, color: string, size: string, count: number) => {
     const existingItem = this.items.find(
-      item => item.product.title === product.title && item.color === color && item.size === size
+      item => item.title === product.title && item.color === color && item.size === size
     )
 
     if (existingItem) {
       existingItem.count += count
     } else {
       this.items.push({
-        id: Math.random().toString(36).substr(2, 9),
-        product,
+        ...product,
         color,
         size,
         count,
       })
     }
+    this.saveToStorage()
   }
 
-  removeItem = (id: string) => {
-    this.items = this.items.filter(item => item.id !== id)
+  removeItem = (id: string, color: string, size: string) => {
+    this.items = this.items.filter(item => !(item._id === id && item.color === color && item.size === size))
+    this.saveToStorage()
   }
 
   updateItemCount = (id: string, count: number) => {
-    const item = this.items.find(item => item.id === id)
+    const item = this.items.find(item => item._id === id)
     if (item) {
       item.count = count
+      this.saveToStorage()
     }
   }
 
   getItemMaxCount = (product: IProduct, color: string, size: string) => {
-    return product.specifications.color[color as keyof typeof product.specifications.color].size[size]
+    if (!product?.specifications?.color?.[color as keyof typeof product.specifications.color]?.size?.[size]) {
+      return 0
+    }
+    const maxCount = product.specifications.color[color as keyof typeof product.specifications.color].size[size]
+    return maxCount
   }
 
   getAvailableQuantity = (product: IProduct, color: string, size: string) => {
     const maxCount = this.getItemMaxCount(product, color, size)
     const existingItem = this.items.find(
-      item => item.product.title === product.title && item.color === color && item.size === size
+      item => item.title === product.title && item.color === color && item.size === size
     )
     return maxCount - (existingItem?.count || 0)
   }
 
   getTotalPrice = () => {
     const subtotal = this.items.reduce((total, item) => {
-      const itemTotal = item.product.oldPrice
-        ? item.product.oldPrice * item.count
-        : item.product.price * item.count
+      const itemTotal = item.oldPrice ? item.oldPrice * item.count : item.price * item.count
       return total + itemTotal
     }, 0)
 
     const discountedTotal = this.items.reduce((total, item) => {
-      return total + item.product.price * item.count
+      return total + item.price * item.count
     }, 0)
 
     const discount = subtotal - discountedTotal
