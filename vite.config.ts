@@ -14,26 +14,17 @@ export default defineConfig({
   plugins: [react()],
   // Настройки сборки
   build: {
-    // Используем terser для минификации
-    minify: 'terser',
-    terserOptions: {
-      compress: {
-        // Удаляем console.log в production
-        drop_console: true,
-        // Удаляем debugger в production
-        drop_debugger: true,
-        // Удаляем неиспользуемый код
-        dead_code: true,
-        // Удаляем неиспользуемые функции
-        unused: true,
-      },
-    },
+    // Разделяем все библиотеки на отдельные чанки
     rollupOptions: {
       output: {
-        // Разделяем код на чанки для оптимизации загрузки
+        // Объединяем некоторые библиотеки в общие чанки для оптимизации
         manualChunks: {
-          // Основные React библиотеки
           'vendor-react': ['react', 'react-dom', 'react-router-dom'],
+          'vendor-mobx': ['mobx', 'mobx-react-lite'],
+          'vendor-react-hook-form': ['react-hook-form'],
+          'vendor-react-swipeable': ['react-swipeable'],
+          'vendor-axios': ['axios'],
+          'vendor-js-cookie': ['js-cookie'],
         },
         // Оптимизация размера чанков
         chunkFileNames: 'assets/js/[name]-[hash].js',

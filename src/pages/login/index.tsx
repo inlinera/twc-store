@@ -2,7 +2,7 @@ import { auth } from '@/shared/stores/api/auth'
 import s from './index.module.scss'
 import { Input } from '@/shared/ui/input'
 import { Button } from '@/shared/ui/button'
-import { useCallback } from 'react'
+import { useCallback, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 import type { IUser } from '@/shared/interfaces/IUser'
 import { observer } from 'mobx-react-lite'
@@ -20,7 +20,9 @@ export const LoginPage = observer(() => {
     [loginUser]
   )
 
-  if (user) return navigate('/')
+  useEffect(() => {
+    if (user) navigate('/')
+  }, [user, navigate])
 
   return (
     <div className={`${s.login} df fdc jcc aic`}>

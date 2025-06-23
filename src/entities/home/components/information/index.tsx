@@ -3,6 +3,7 @@ import s from './index.module.scss'
 import { Trophy } from '@/shared/icons/Trophy'
 import { CreditCard } from '@/shared/icons/CreditCard'
 import { Headphones } from '@/shared/icons/headphones'
+import React from 'react'
 
 interface IITem {
   title: string
@@ -48,8 +49,8 @@ export const HomeInfo = () => {
   return (
     <div className={`${s.homeInfo} df aic jcsb`}>
       {items.map((item, id) => (
-        <>
-          <div className={`${s.info} df aic`} key={id}>
+        <React.Fragment key={id}>
+          <div className={`${s.info} df aic`}>
             {item.icon}
             <div className="df fdc jcsb">
               <p>{item.title}</p>
@@ -57,7 +58,7 @@ export const HomeInfo = () => {
             </div>
           </div>
           {id !== items.length - 1 && <Divider />}
-        </>
+        </React.Fragment>
       ))}
     </div>
   )
