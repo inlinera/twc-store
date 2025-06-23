@@ -4,44 +4,44 @@ export const HandShake = () => {
       <path
         d="M22.5656 11.5616L20.25 12.7148L17.25 6.97726L19.5938 5.80539C19.7679 5.71661 19.9701 5.70029 20.1563 5.76C20.3425 5.81971 20.4975 5.95061 20.5875 6.12414L22.8937 10.5398C22.9405 10.6282 22.9691 10.725 22.9779 10.8246C22.9867 10.9242 22.9755 11.0246 22.9449 11.1198C22.9143 11.215 22.865 11.3032 22.7999 11.379C22.7348 11.4549 22.6551 11.517 22.5656 11.5616V11.5616Z"
         stroke="currentColor"
-        stroke-width="1.5"
-        stroke-linecap="round"
-        stroke-linejoin="round"
+        strokeWidth="1.5"
+        strokeLinecap="round"
+        strokeLinejoin="round"
       />
       <path
         d="M3.75008 12.6214L1.43446 11.4589C1.3453 11.4152 1.26584 11.354 1.20079 11.279C1.13575 11.204 1.08646 11.1167 1.05585 11.0222C1.02524 10.9278 1.01393 10.8281 1.02261 10.7292C1.03128 10.6303 1.05975 10.5341 1.10633 10.4464L3.41258 6.0308C3.5028 5.85739 3.65716 5.72606 3.84277 5.66477C4.02839 5.60348 4.2306 5.61708 4.40633 5.70268L6.75009 6.87455L3.75008 12.6214Z"
         stroke="currentColor"
-        stroke-width="1.5"
-        stroke-linecap="round"
-        stroke-linejoin="round"
+        strokeWidth="1.5"
+        strokeLinecap="round"
+        strokeLinejoin="round"
       />
       <path
         d="M20.25 12.7148L18.75 14.4773L15.3 17.9273C15.206 18.0153 15.092 18.0791 14.968 18.1134C14.8439 18.1477 14.7133 18.1514 14.5875 18.1242L9.15 16.7648C9.05067 16.7372 8.95812 16.6893 8.87812 16.6242L3.75 12.6211"
         stroke="currentColor"
-        stroke-width="1.5"
-        stroke-linecap="round"
-        stroke-linejoin="round"
+        strokeWidth="1.5"
+        strokeLinecap="round"
+        strokeLinejoin="round"
       />
       <path
         d="M18.7501 14.4775L14.6251 11.4775L13.4251 12.3775C12.9052 12.7656 12.2738 12.9752 11.6251 12.9752C10.9763 12.9752 10.345 12.7656 9.82508 12.3775L9.31883 11.9932C9.23323 11.9281 9.16242 11.8456 9.1111 11.7511C9.05978 11.6566 9.02911 11.5522 9.02113 11.445C9.01316 11.3377 9.02805 11.23 9.06483 11.129C9.1016 11.0279 9.15942 10.9358 9.23446 10.8588L12.9095 7.19317C12.9785 7.12447 13.0604 7.07007 13.1505 7.03307C13.2406 6.99607 13.3371 6.9772 13.4345 6.97754H17.2501"
         stroke="currentColor"
-        stroke-width="1.5"
-        stroke-linecap="round"
-        stroke-linejoin="round"
+        strokeWidth="1.5"
+        strokeLinecap="round"
+        strokeLinejoin="round"
       />
       <path
         d="M6.80615 6.87427L11.6155 5.46802C11.7864 5.41902 11.9692 5.43231 12.1312 5.50552L15.3749 6.9774"
         stroke="currentColor"
-        stroke-width="1.5"
-        stroke-linecap="round"
-        stroke-linejoin="round"
+        strokeWidth="1.5"
+        strokeLinecap="round"
+        strokeLinejoin="round"
       />
       <path
         d="M10.5 20.1024L7.67813 19.3899C7.56313 19.364 7.45666 19.3091 7.36875 19.2306L5.25 17.3931"
         stroke="currentColor"
-        stroke-width="1.5"
-        stroke-linecap="round"
-        stroke-linejoin="round"
+        strokeWidth="1.5"
+        strokeLinecap="round"
+        strokeLinejoin="round"
       />
     </svg>
   )
