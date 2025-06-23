@@ -4,7 +4,7 @@ import { Breadcrumbs } from '@/shared/ui/breadcrumbs'
 
 export const TrackOrder = () => {
   return (
-    <div className="df fdc">
+    <div className="df fdc" style={{ width: '100%' }}>
       <Breadcrumbs />
       <div className={`${s.orderPage} df fdc`}>
         <OrderInfo />

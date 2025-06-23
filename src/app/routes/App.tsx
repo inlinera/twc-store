@@ -3,8 +3,10 @@ import { CartPage } from '@/pages/cart'
 import { FavoritePage } from '@/pages/favorite'
 import { HomePage } from '@/pages/home'
 import { OrderPage } from '@/pages/order'
+import { RegisterPage } from '@/pages/register'
 import { TrackOrder } from '@/pages/order-track'
 import { ProductPage } from '@/pages/product'
+import { LoginPage } from '@/pages/login'
 import { Header } from '@/widgets/layout/header'
 import { Navigation } from '@/widgets/layout/navigation'
 import { Routes, Route } from 'react-router-dom'
@@ -18,6 +20,8 @@ export const App = () => {
 
         <Routes>
           <Route path="/" element={<HomePage />} />
+          <Route path="/register" element={<RegisterPage />} />
+          <Route path="/login" element={<LoginPage />} />
           <Route path="/product/:productId" element={<ProductPage />} />
           <Route path="/favorite" element={<FavoritePage />} />
           <Route path="/cart" element={<CartPage />} />

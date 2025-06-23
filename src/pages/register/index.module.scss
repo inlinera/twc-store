@@ -1,0 +1,10 @@
+.register {
+  position: relative;
+  width: 100%;
+  font-family: 'Open Sans', sans-serif;
+  gap: 40px;
+
+  h2 {
+    font-size: clamp(23px, 10vw, 30px);
+  }
+}

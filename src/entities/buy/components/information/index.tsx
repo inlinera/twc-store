@@ -1,33 +1,31 @@
 import { Input } from '@/shared/ui/input'
 import s from './index.module.scss'
 import { useForm } from 'react-hook-form'
+import type { IOrder } from '@/shared/interfaces/IOrder'
+import React from 'react'
+import { Button } from '@/shared/ui/button'
 
-interface Info {
-  name: string
-  surname: string
-  company?: string
-  address: string
-  region: string
-  city: string
-  postCode: string
-  email: string
-  phone: string
+interface UserInformationFormProps {
+  onSubmit: (data: IOrder) => void
+  defaultValues?: Partial<IOrder>
+  isRegistration?: boolean
 }
 
-export const InformationBuy = () => {
+export const UserInformationForm: React.FC<UserInformationFormProps> = ({
+  onSubmit,
+  defaultValues = {},
+  isRegistration = false,
+}) => {
   const {
     register,
     handleSubmit,
     formState: { errors },
     trigger,
-  } = useForm<Info>({
+  } = useForm<IOrder>({
     mode: 'onChange',
     reValidateMode: 'onChange',
+    defaultValues,
   })
-
-  const onSubmit = (data: Info) => {
-    console.log(data)
-  }
 
   return (
     <form className={`${s.infoBuy} df fdc`} onSubmit={handleSubmit(onSubmit)}>
@@ -38,24 +36,24 @@ export const InformationBuy = () => {
             <div className="df fdc">
               <Input
                 placeholder="Имя"
-                {...register('name', {
+                {...register('firstName', {
                   required: 'Имя обязательно',
-                  onChange: () => trigger('name'),
+                  onChange: () => trigger('firstName'),
                 })}
-                className={`${s.input} ${errors.name ? s.inputError : ''}`}
+                className={`${s.input} ${errors.firstName ? s.inputError : ''}`}
               />
-              {errors.name && <span className={s.error}>{errors.name.message}</span>}
+              {errors.firstName && <span className={s.error}>{String(errors.firstName.message)}</span>}
             </div>
             <div className="df fdc">
               <Input
                 placeholder="Фамилия"
-                {...register('surname', {
+                {...register('lastName', {
                   required: 'Фамилия обязательна',
-                  onChange: () => trigger('surname'),
+                  onChange: () => trigger('lastName'),
                 })}
-                className={`${s.input} ${errors.surname ? s.inputError : ''}`}
+                className={`${s.input} ${errors.lastName ? s.inputError : ''}`}
               />
-              {errors.surname && <span className={s.error}>{errors.surname.message}</span>}
+              {errors.lastName && <span className={s.error}>{String(errors.lastName.message)}</span>}
             </div>
           </div>
         </div>
@@ -76,7 +74,7 @@ export const InformationBuy = () => {
             })}
             className={`${s.input} ${errors.address ? s.inputError : ''}`}
           />
-          {errors.address && <span className={s.error}>{errors.address.message}</span>}
+          {errors.address && <span className={s.error}>{String(errors.address.message)}</span>}
         </div>
       </div>
       <div className={`${s.inputRow} df aic`}>
@@ -89,7 +87,7 @@ export const InformationBuy = () => {
             })}
             className={`${s.input} ${errors.region ? s.inputError : ''}`}
           />
-          {errors.region && <span className={s.error}>{errors.region.message}</span>}
+          {errors.region && <span className={s.error}>{String(errors.region.message)}</span>}
         </div>
         <div className={`df fdc`}>
           <h4>Город</h4>
@@ -100,7 +98,7 @@ export const InformationBuy = () => {
             })}
             className={`${s.input} ${errors.city ? s.inputError : ''}`}
           />
-          {errors.city && <span className={s.error}>{errors.city.message}</span>}
+          {errors.city && <span className={s.error}>{String(errors.city.message)}</span>}
         </div>
         <div className={`df fdc`}>
           <h4>Почтовый код</h4>
@@ -115,7 +113,7 @@ export const InformationBuy = () => {
             })}
             className={`${s.input} ${errors.postCode ? s.inputError : ''}`}
           />
-          {errors.postCode && <span className={s.error}>{errors.postCode.message}</span>}
+          {errors.postCode && <span className={s.error}>{String(errors.postCode.message)}</span>}
         </div>
       </div>
       <div className={`${s.inputRow} df aic`}>
@@ -133,7 +131,7 @@ export const InformationBuy = () => {
             })}
             className={`${s.input} ${errors.email ? s.inputError : ''}`}
           />
-          {errors.email && <span className={s.error}>{errors.email.message}</span>}
+          {errors.email && <span className={s.error}>{String(errors.email.message)}</span>}
         </div>
       </div>
       <div className={`${s.inputRow} df aic`}>
@@ -146,15 +144,17 @@ export const InformationBuy = () => {
                 value: /^\+7[0-9]{10}$/,
                 message: 'Введите номер в формате +7XXXXXXXXXX',
               },
-              validate: value => value.startsWith('+7') || 'Номер должен начинаться с +7',
+              validate: value =>
+                (typeof value === 'string' && value.startsWith('+7')) || 'Номер должен начинаться с +7',
               onChange: () => trigger('phone'),
             })}
             placeholder="+7XXXXXXXXXX"
             className={`${s.input} ${errors.phone ? s.inputError : ''}`}
           />
-          {errors.phone && <span className={s.error}>{errors.phone.message}</span>}
+          {errors.phone && <span className={s.error}>{String(errors.phone.message)}</span>}
         </div>
       </div>
+      {isRegistration && <Button>Зарегистрироваться</Button>}
     </form>
   )
 }
