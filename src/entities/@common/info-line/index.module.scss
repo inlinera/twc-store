@@ -1,0 +1,47 @@
+.infoLine {
+  position: relative;
+  width: 100%;
+  gap: 30px;
+
+  .item {
+    position: relative;
+    width: 100%;
+    padding: clamp(10px, 1.5vw, 15px);
+    border-radius: 10px;
+    background-color: var(--el-color);
+    flex: 1;
+    white-space: nowrap;
+    gap: 10px;
+
+    svg {
+      height: 35px;
+      width: 35px;
+      stroke-width: 1px;
+    }
+
+    &:not(:last-child)::after {
+      content: '';
+      position: absolute;
+      top: 50%;
+      right: -15px;
+      transform: translateY(-50%);
+      width: 1px;
+      height: 70%;
+      background: var(--divider-color, var(--light-gray-color));
+      z-index: 1;
+    }
+
+    .content {
+      gap: 2px;
+      font-size: 14px;
+
+      b {
+        font-weight: 500;
+      }
+
+      p:nth-child(2) {
+        color: var(--light-gray-color);
+      }
+    }
+  }
+}

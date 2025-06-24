@@ -16,10 +16,13 @@ export const HomePage = observer(() => {
   const { setPath } = states
   const { items, getProducts, loading } = products
 
-  const carouselProducts = items?.slice(0, 3)
-  const goodsProducts = items?.slice(3, 5)
-  const bigProduct = items?.[5]
-  const listProducts = items?.slice(6)
+  const maxProducts = 14
+  const limitedItems = items?.slice(0, maxProducts)
+
+  const carouselProducts = limitedItems?.slice(0, 3)
+  const goodsProducts = limitedItems?.slice(3, 5)
+  const bigProduct = limitedItems?.[5]
+  const listProducts = limitedItems?.slice(6)
 
   useEffect(() => {
     if (!items) getProducts()

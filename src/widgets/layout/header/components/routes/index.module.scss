@@ -1,0 +1,17 @@
+.routes {
+  gap: clamp(10px, 2vw, 15px);
+
+  .count {
+    position: absolute;
+    bottom: -8px;
+    right: -8px;
+    padding: 2px 5px;
+    font-size: clamp(90px, 5vw, 13px);
+    background-color: var(--purple-color);
+    border-radius: 50%;
+    font-size: 12px;
+    font-weight: 600;
+    color: #fff;
+    user-select: none;
+  }
+}
