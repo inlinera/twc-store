@@ -11,7 +11,7 @@ import { useForm } from 'react-hook-form'
 import { order } from '@/shared/stores/api/order'
 import type { IOrder } from '@/shared/interfaces/IOrder'
 
-export const OrderPage = observer(() => {
+const OrderPage = observer(() => {
   const { setPath } = states
   const { register, handleSubmit } = useForm<Pick<IOrder, 'id' | 'email'>>()
   const { order: orderData, getOrder } = order
@@ -50,3 +50,5 @@ export const OrderPage = observer(() => {
     </div>
   )
 })
+
+export default OrderPage

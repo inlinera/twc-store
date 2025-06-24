@@ -12,7 +12,7 @@ import {
 } from '@/entities/home/'
 import { products } from '@/shared/stores/api/products'
 
-export const HomePage = observer(() => {
+const HomePage = observer(() => {
   const { setPath } = states
   const { items, getProducts, loading } = products
 
@@ -56,3 +56,5 @@ export const HomePage = observer(() => {
     </div>
   )
 })
+
+export default HomePage

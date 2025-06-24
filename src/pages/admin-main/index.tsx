@@ -75,7 +75,7 @@ const bottomRightItems = [
   },
 ]
 
-export const AdminMainPage = () => {
+const AdminMainPage = () => {
   useIsAdmin()
 
   return (
@@ -98,3 +98,5 @@ export const AdminMainPage = () => {
     </div>
   )
 }
+
+export default AdminMainPage

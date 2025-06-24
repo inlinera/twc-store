@@ -2,7 +2,7 @@ import s from './index.module.scss'
 import { OrderProgressBar, OrderTrackActivity, OrderInfo } from '@/entities/order-track/'
 import { Breadcrumbs } from '@/shared/ui/breadcrumbs'
 
-export const TrackOrder = () => {
+const TrackOrder = () => {
   return (
     <div className="df fdc" style={{ width: '100%' }}>
       <Breadcrumbs />
@@ -15,3 +15,5 @@ export const TrackOrder = () => {
     </div>
   )
 }
+
+export default TrackOrder

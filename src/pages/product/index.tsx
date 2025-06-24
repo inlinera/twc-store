@@ -8,7 +8,7 @@ import { Breadcrumbs } from '@/shared/ui/breadcrumbs'
 import { useParams } from 'react-router-dom'
 import { products } from '@/shared/stores/api/products'
 
-export const ProductPage = observer(() => {
+const ProductPage = observer(() => {
   const { productId } = useParams()
   const [product, setProduct] = useState<IProduct | null>(null)
   const { getProductById, loading } = products
@@ -45,3 +45,5 @@ export const ProductPage = observer(() => {
     </div>
   )
 })
+
+export default ProductPage

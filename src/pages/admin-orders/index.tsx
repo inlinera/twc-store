@@ -51,7 +51,7 @@ const listOrders = [
   },
 ]
 
-export const AdminOrdersPage = () => {
+const AdminOrdersPage = () => {
   return (
     <div className={`${s.adminOrdersPage} df fdc`}>
       <div className={`${s.inputs} df aic`}>
@@ -68,3 +68,5 @@ export const AdminOrdersPage = () => {
     </div>
   )
 }
+
+export default AdminOrdersPage

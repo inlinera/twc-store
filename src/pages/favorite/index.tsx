@@ -5,7 +5,7 @@ import { states } from '@/shared/stores/states'
 import { useEffect } from 'react'
 import { Breadcrumbs } from '@/shared/ui/breadcrumbs'
 
-export const FavoritePage = observer(() => {
+const FavoritePage = observer(() => {
   const { setPath } = states
 
   useEffect(() => {
@@ -28,3 +28,5 @@ export const FavoritePage = observer(() => {
     </div>
   )
 })
+
+export default FavoritePage

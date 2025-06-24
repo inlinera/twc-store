@@ -27,7 +27,7 @@ const listUsers = [
   },
 ]
 
-export const AdminUsersPage = () => {
+const AdminUsersPage = () => {
   return (
     <div className={`${s.adminUsersPage} df fdc`}>
       <div className={`${s.inputs} df aic`}>
@@ -43,3 +43,5 @@ export const AdminUsersPage = () => {
     </div>
   )
 }
+
+export default AdminUsersPage

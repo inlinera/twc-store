@@ -8,7 +8,7 @@ interface IInfoLineItem {
 
 interface IInfoLineProps {
   items: IInfoLineItem[]
-  itemsContentAlign: 'center' | 'start'
+  itemsContentAlign?: 'center' | 'start'
   dividerColor?: string
 }
 

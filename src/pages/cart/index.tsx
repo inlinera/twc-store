@@ -6,7 +6,7 @@ import { useEffect } from 'react'
 import { Breadcrumbs } from '@/shared/ui/breadcrumbs'
 import { cart } from '@/shared/stores/local/cart'
 
-export const CartPage = observer(() => {
+const CartPage = observer(() => {
   const { items } = cart
   const { setPath, setBuyInfo } = states
 
@@ -25,3 +25,5 @@ export const CartPage = observer(() => {
     </div>
   )
 })
+
+export default CartPage

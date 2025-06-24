@@ -7,7 +7,7 @@ import { observer } from 'mobx-react-lite'
 import s from './index.module.scss'
 import { useNavigate } from 'react-router-dom'
 
-export const RegisterPage = observer(() => {
+const RegisterPage = observer(() => {
   const navigate = useNavigate()
   const { register: registerUser } = auth
 
@@ -37,3 +37,5 @@ export const RegisterPage = observer(() => {
     </div>
   )
 })
+
+export default RegisterPage

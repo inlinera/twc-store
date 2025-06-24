@@ -7,7 +7,7 @@ import { Breadcrumbs } from '@/shared/ui/breadcrumbs'
 import { CartBuyBlock } from '@/entities/cart'
 import type { IOrder } from '@/shared/interfaces/IOrder'
 
-export const BuyPage = observer(() => {
+const BuyPage = observer(() => {
   const { setPath } = states
 
   const onSubmit = useCallback((data: IOrder) => {
@@ -33,3 +33,5 @@ export const BuyPage = observer(() => {
     </div>
   )
 })
+
+export default BuyPage

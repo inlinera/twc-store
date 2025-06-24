@@ -8,7 +8,7 @@ import type { IUser } from '@/shared/interfaces/IUser'
 import { observer } from 'mobx-react-lite'
 import { useForm } from 'react-hook-form'
 
-export const LoginPage = observer(() => {
+const LoginPage = observer(() => {
   const { register, handleSubmit } = useForm<Pick<IUser, 'email' | 'phone'>>()
   const { login: loginUser, user } = auth
   const navigate = useNavigate()
@@ -41,3 +41,5 @@ export const LoginPage = observer(() => {
     </div>
   )
 })
+
+export default LoginPage
