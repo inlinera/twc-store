@@ -1,0 +1,21 @@
+.adminProductsPage {
+  position: relative;
+  width: 100%;
+  gap: 20px;
+  margin-top: -40px;
+
+  .inputs {
+    width: 100%;
+    gap: 10px;
+    color: var(--default);
+
+    input {
+      padding: 15px 40px;
+      background-color: var(--el-color);
+    }
+  }
+
+  .list {
+    gap: 5px;
+  }
+}

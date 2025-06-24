@@ -19,34 +19,36 @@ export const Navigation = () => {
   const { pathname } = useLocation()
 
   return (
-    <nav className={`${s.navigation} df fdc aic jcc`}>
-      <Input
-        className={s.input}
-        placeholder="Найти на tutorial.market"
-        endElement={
-          <button>
-            <Search />
-          </button>
-        }
-      />
-      <div className={`${s.btns} df aic`}>
-        {btns.map((b, id) => {
-          const isReverse = id === 0 ? s.rowRev : ''
-          const isActive = pathname === b.path || (pathname.startsWith('/product') && id === 0)
+    !pathname.startsWith('/admin') && (
+      <nav className={`${s.navigation} df fdc aic jcc`}>
+        <Input
+          className={s.input}
+          placeholder="Найти на tutorial.market"
+          endElement={
+            <button>
+              <Search />
+            </button>
+          }
+        />
+        <div className={`${s.btns} df aic`}>
+          {btns.map((b, id) => {
+            const isReverse = id === 0 ? s.rowRev : ''
+            const isActive = pathname === b.path || (pathname.startsWith('/product') && id === 0)
 
-          if (isActive)
+            if (isActive)
+              return (
+                <Link to={b.path} className={`${s.active} df ${isReverse ? s.rowRev : ''}`} key={id}>
+                  {b.icon} {b.title}
+                </Link>
+              )
             return (
-              <Link to={b.path} className={`${s.active} df ${isReverse ? s.rowRev : ''}`} key={id}>
+              <Link to={b.path} className={`df ${isReverse ? s.rowRev : ''}`} key={id}>
                 {b.icon} {b.title}
               </Link>
             )
-          return (
-            <Link to={b.path} className={`df ${isReverse ? s.rowRev : ''}`} key={id}>
-              {b.icon} {b.title}
-            </Link>
-          )
-        })}
-      </div>
-    </nav>
+          })}
+        </div>
+      </nav>
+    )
   )
 }
