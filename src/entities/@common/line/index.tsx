@@ -11,9 +11,9 @@ interface ILineProps {
 
 export const Line = ({ items }: ILineProps) => {
   return (
-    <div className={`${s.line} dg aic jcc`} style={{ gridTemplateColumns: `repeat(${items.length}, 1fr)` }}>
+    <div className={s.line} style={{ gridTemplateColumns: `repeat(${items.length}, 1fr)` }}>
       {items.map((item, id) => (
-        <div className={`${s.item} ${item.isGreen ? s.green : ''} df aic jcc`} key={id}>
+        <div className={`${s.item} ${item.isGreen ? s.green : ''}`} key={id}>
           {item.content}
         </div>
       ))}

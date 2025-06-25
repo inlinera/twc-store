@@ -1,5 +1,17 @@
 import type { ColorT } from './IProduct'
 
+type OrderStatus =
+  | 'Заказ создан'
+  | 'Заказ оплачен и подтверждён администратором'
+  | 'Заказ успешно отправлен'
+  | 'Заказ поступил в город получателя'
+  | 'Заказ у Курьера'
+  | 'Заказ вручен! Спасибо за покупку'
+
+export type IOrderStatus = {
+  [key in OrderStatus]?: string
+}
+
 export interface IOrderProduct {
   id: string
   specification: {
@@ -8,10 +20,6 @@ export interface IOrderProduct {
     }
   }
   count: number
-}
-
-export interface IOrderStatus {
-  [key: string]: string
 }
 
 export interface IOrder {

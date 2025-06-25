@@ -1,6 +1,6 @@
 import type { IProduct } from '../interfaces/IProduct'
 
-export const isProductAvailable = (product: IProduct, color?: string, size?: string): boolean => {
+export const isProductAvailable = (product: IProduct, color?: string, size?: string) => {
   if (!product?.specifications) {
     return false
   }

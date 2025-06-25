@@ -3,6 +3,10 @@ import { InfoAdminMain } from '@/entities/admin-main'
 import s from './index.module.scss'
 import { Line } from '@/entities/@common/line'
 import { DownloadSimple } from '@/shared/icons/DownloadSimple'
+import { observer } from 'mobx-react-lite'
+import { order } from '@/shared/stores/api/order'
+import { products } from '@/shared/stores/api/products'
+import { useEffect } from 'react'
 
 const leftItems = [
   {
@@ -22,16 +26,7 @@ const leftItems = [
   },
 ]
 
-const bottomLeftItems = [
-  {
-    content: '№1',
-  },
-  {
-    content: 'Иванов Иван',
-  },
-  {
-    content: '01.01.2025',
-  },
+const commonBottomLeftItems = [
   {
     content: 'Оплачен',
     isGreen: true,
@@ -60,43 +55,75 @@ const rightItems = [
   },
 ]
 
-const bottomRightItems = [
-  {
-    content: '№1',
-  },
-  {
-    content: 'Футболка Clout',
-  },
-  {
-    content: '1000 ₽',
-  },
-  {
-    content: '1000',
-  },
-]
-
-const AdminMainPage = () => {
+const AdminMainPage = observer(() => {
   useIsAdmin()
+  const { getAllOrders, orders, loading } = order
+  const { getProducts, items, loading: productsLoading } = products
+
+  useEffect(() => {
+    getAllOrders()
+    getProducts()
+  }, [])
 
   return (
     <div className={`${s.adminMainPage} df fdc`}>
       <InfoAdminMain />
       <div className={`${s.blocks} df jcsb`}>
-        <div className={`${s.block} df fdc`}>
+        <div className={`${s.block} df fdc aic`}>
           <Line items={leftItems} />
-          {Array.from({ length: 10 }).map((_, id) => (
-            <Line items={bottomLeftItems} key={id} />
-          ))}
+          {loading ? (
+            <div>Loading...</div>
+          ) : orders && orders.length > 0 ? (
+            orders?.map((order, id) => {
+              const item = [
+                {
+                  content: `№${id + 1}`,
+                },
+                {
+                  content: order.lastName + ' ' + order.firstName,
+                },
+                {
+                  content: `${order.status['Заказ создан']}`,
+                },
+                ...commonBottomLeftItems,
+              ]
+
+              return <Line items={item} key={id} />
+            })
+          ) : (
+            <div>Заказов нет</div>
+          )}
         </div>
-        <div className={`${s.block} df fdc`}>
+        <div className={`${s.block} df fdc aic`}>
           <Line items={rightItems} />
-          {Array.from({ length: 10 }).map((_, id) => (
-            <Line items={bottomRightItems} key={id} />
-          ))}
+          {productsLoading ? (
+            <div>Loading...</div>
+          ) : items && items.length > 0 ? (
+            items?.map((item, id) => {
+              const product = [
+                {
+                  content: `№${id + 1}`,
+                },
+                {
+                  content: item.title,
+                },
+                {
+                  content: item.price,
+                },
+                {
+                  content: 100,
+                },
+              ]
+
+              return <Line items={product} key={item._id} />
+            })
+          ) : (
+            <div>Товаров нет</div>
+          )}
         </div>
       </div>
     </div>
   )
-}
+})
 
 export default AdminMainPage

@@ -3,6 +3,10 @@ import s from './index.module.scss'
 import { Input } from '@/shared/ui/input'
 import { Line } from '@/entities/@common/line'
 import { PencilSimple } from '@/shared/icons/PencilSimple'
+import { observer } from 'mobx-react-lite'
+import { useEffect } from 'react'
+import { products } from '@/shared/stores/api/products'
+import { isProductAvailable } from '@/shared/functions/isProductAvailable'
 
 const infoProducts = [
   {
@@ -25,33 +29,13 @@ const infoProducts = [
   },
 ]
 
-const listProducts = [
-  {
-    content: 'Футболка Clout',
-  },
-  {
-    content: 'M',
-  },
-  {
-    content: '1000',
-  },
-  {
-    content: '10',
-  },
-  {
-    content: 'В продаже',
-    isGreen: true,
-  },
-  {
-    content: (
-      <button>
-        <PencilSimple />
-      </button>
-    ),
-  },
-]
+const AdminProductsPage = observer(() => {
+  const { getProducts, items, loading } = products
 
-const AdminProductsPage = () => {
+  useEffect(() => {
+    getProducts()
+  }, [])
+
   return (
     <div className={`${s.adminProductsPage} df fdc`}>
       <div className={`${s.inputs} df aic`}>
@@ -61,12 +45,46 @@ const AdminProductsPage = () => {
       </div>
       <div className={`${s.list} df fdc aic`}>
         <Line items={infoProducts} />
-        {Array.from({ length: 10 }).map((_, id) => (
-          <Line items={listProducts} key={id} />
-        ))}
+        {loading ? (
+          <div>Loading...</div>
+        ) : items && items.length > 0 ? (
+          items.map((item, id) => {
+            const product = [
+              {
+                content: `${item.title}`,
+              },
+              {
+                content: `${Object.keys(item.specifications.color.white.size)[0]}`,
+              },
+              {
+                content: `${item.price} ₽`,
+              },
+              {
+                content: `${
+                  item.specifications.color.white.size[Object.keys(item.specifications.color.white.size)[0]]
+                }`,
+              },
+              {
+                content: isProductAvailable(item) ? 'В продаже' : 'Нет в продаже',
+                isGreen: isProductAvailable(item),
+              },
+              {
+                content: (
+                  <button>
+                    <PencilSimple />
+                  </button>
+                ),
+              },
+            ]
+
+            return <Line items={product} key={id} />
+          })
+        ) : (
+          <div>Товаров нет</div>
+        )}
       </div>
     </div>
   )
-}
+})
 
 export default AdminProductsPage

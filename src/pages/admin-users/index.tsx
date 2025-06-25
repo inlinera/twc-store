@@ -2,6 +2,9 @@ import { Input } from '@/shared/ui/input'
 import { Search } from '@/shared/icons/search'
 import s from './index.module.scss'
 import { Line } from '@/entities/@common/line'
+import { observer } from 'mobx-react-lite'
+import { useEffect } from 'react'
+import { users } from '@/shared/stores/api/auth/getAllUsers'
 
 const infoUsers = [
   {
@@ -15,19 +18,13 @@ const infoUsers = [
   },
 ]
 
-const listUsers = [
-  {
-    content: 'Иван Иванов Иванович',
-  },
-  {
-    content: 'Москва',
-  },
-  {
-    content: '100',
-  },
-]
+const AdminUsersPage = observer(() => {
+  const { users: items, loading, getAllUsers } = users
 
-const AdminUsersPage = () => {
+  useEffect(() => {
+    getAllUsers()
+  }, [])
+
   return (
     <div className={`${s.adminUsersPage} df fdc`}>
       <div className={`${s.inputs} df aic`}>
@@ -36,12 +33,30 @@ const AdminUsersPage = () => {
       </div>
       <div className={`${s.list} df fdc aic`}>
         <Line items={infoUsers} />
-        {Array.from({ length: 10 }).map((_, id) => (
-          <Line items={listUsers} key={id} />
-        ))}
+        {loading ? (
+          <div>Loading...</div>
+        ) : items && items.length > 0 ? (
+          items.map((user, id) => {
+            const userLine = [
+              {
+                content: `${user.firstName} ${user.lastName}`,
+              },
+              {
+                content: `${user.city}`,
+              },
+              {
+                content: `10`,
+              },
+            ]
+
+            return <Line items={userLine} key={id} />
+          })
+        ) : (
+          <div>Users not found</div>
+        )}
       </div>
     </div>
   )
-}
+})
 
 export default AdminUsersPage

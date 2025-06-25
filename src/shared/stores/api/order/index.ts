@@ -3,7 +3,9 @@ import axios from 'axios'
 import type { IOrder } from '@/shared/interfaces/IOrder'
 
 class OrderStore {
+  orders: IOrder[] | null = null
   order: IOrder | null = null
+  activeOrders: IOrder[] | null = null
   loading = false
   private api = `${import.meta.env.VITE_API_URL}/order`
 
@@ -24,6 +26,34 @@ class OrderStore {
       console.error(error)
     } finally {
       this.loading = false
+    }
+  }
+
+  getAllOrders = async () => {
+    this.loading = true
+    try {
+      const response = await axios.get<IOrder[]>(`${this.api}/getallorders`)
+
+      if (response.data) {
+        this.orders = response.data
+      }
+    } catch (error) {
+      console.error(error)
+    } finally {
+      this.loading = false
+    }
+  }
+
+  getAllActiveOrders = async () => {
+    this.loading = true
+    try {
+      const response = await axios.get<IOrder[]>(`${this.api}/getallactiveorders`)
+
+      if (response.data) {
+        this.activeOrders = response.data
+      }
+    } catch (error) {
+      console.error(error)
     }
   }
 
