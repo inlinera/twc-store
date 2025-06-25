@@ -1,17 +1,21 @@
+import { observer } from 'mobx-react-lite'
 import s from './index.module.scss'
+import { order } from '@/shared/stores/api/order'
 
-export const OrderInfo = () => {
+export const OrderInfo = observer(() => {
+  const { order: orderInfo } = order
+
   return (
     <div className={`${s.orderInfo} df aic jcsb`}>
       <div className="df fdc">
-        <h2>#5894739</h2>
+        <h2>#{orderInfo?.id}</h2>
         <div className="df aic">
-          <p>4 товара</p>
+          <p>{orderInfo?.products.length}</p>
           <span>•</span>
-          <p>Заказ создан 12 апреля 2025 в 18:00</p>
+          <p>Заказ создан {orderInfo?.status['Заказ создан']}</p>
         </div>
       </div>
-      <b>1 000 ₽</b>
+      <b>{orderInfo?.price} ₽</b>
     </div>
   )
-}
+})

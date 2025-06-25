@@ -6,27 +6,60 @@ import { MapPinLine } from '@/shared/icons/mappinline'
 import { MapTrifold } from '@/shared/icons/MapTrifold'
 import { CheckCircle } from '@/shared/icons/CheckCircle'
 import { Notepad } from '@/shared/icons/Notepad'
+import { observer } from 'mobx-react-lite'
+import { order } from '@/shared/stores/api/order'
 
-const activity: ActivityItemProps[] = [
-  { color: 'green', svg: <Checks />, title: 'Заказ вручен! Спасибо за покупку', date: '13 апреля 2025 в 22:22' },
-  { color: 'blue', svg: <User />, title: 'Заказ у Курьера ', date: '13 апреля 2025 в 21:00' },
+const rawActivity: Omit<ActivityItemProps, 'date'>[] = [
   {
+    title: 'Заказ вручен! Спасибо за покупку',
+    color: 'green',
+    svg: <Checks />,
+  },
+  {
+    title: 'Заказ у Курьера ',
+    color: 'blue',
+    svg: <User />,
+  },
+  {
+    title: 'Заказ поступил в город получателя',
     color: 'blue',
     svg: <MapPinLine />,
-    title: 'Заказ поступил в город получателя',
-    date: '13 апреля 2025 в 19:00',
   },
-  { color: 'blue', svg: <MapTrifold />, title: 'Заказ успешно отправлен', date: '12 апреля 2025 в 19:00' },
   {
+    title: 'Заказ успешно отправлен',
+    color: 'blue',
+    svg: <MapTrifold />,
+  },
+  {
+    title: 'Заказ оплачен и подтверждён администратором',
     color: 'green',
     svg: <CheckCircle />,
-    title: 'Заказ оплачен и подтверждён администратором',
-    date: '12 апреля 2025 в 18:05',
   },
-  { color: 'blue', svg: <Notepad />, title: 'Заказ создан', date: '12 апреля 2025 в 18:00' },
+  {
+    title: 'Заказ создан',
+    color: 'blue',
+    svg: <Notepad />,
+  },
 ]
 
-export const OrderTrackActivity = () => {
+export const OrderTrackActivity = observer(() => {
+  const { order: orderInfo } = order
+
+  const activity: ActivityItemProps[] = rawActivity
+    .map(({ title, color, svg }) => {
+      const date = (orderInfo?.status as Record<string, string>)[title]
+
+      return date
+        ? {
+            color,
+            svg,
+            title,
+            date,
+          }
+        : null
+    })
+    .filter(Boolean) as ActivityItemProps[]
+
   return (
     <div className={`${s.activity} df fdc`}>
       <h2>Активность заказа</h2>
@@ -35,4 +68,4 @@ export const OrderTrackActivity = () => {
       ))}
     </div>
   )
-}
+})
