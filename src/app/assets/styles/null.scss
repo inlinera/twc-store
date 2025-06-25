@@ -121,6 +121,7 @@ body {
   flex-direction: column;
   color: var(--default);
   cursor: default;
+  overflow-y: scroll;
 
   main {
     margin-top: clamp(40px, 5vw, 50px);
@@ -131,4 +132,17 @@ body {
     background-color: var(--purple-color);
     color: #fff;
   }
+}
+
+::-webkit-scrollbar {
+  width: 5px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--purple-color);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--el-color);
 }

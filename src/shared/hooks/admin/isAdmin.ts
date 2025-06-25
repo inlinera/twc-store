@@ -3,14 +3,12 @@ import type { IUser } from '@/shared/interfaces/IUser'
 import { useState } from 'react'
 
 export const useIsAdmin = () => {
-  const [isAdmin, setIsAdmin] = useState(false)
+  const [isAdmin, setIsAdmin] = useState(true)
 
   const user = Cookies.get('user')
 
   if (user) {
     const userData = JSON.parse(user) as IUser
-
-    console.log(userData)
 
     if (
       userData.email !== import.meta.env.VITE_ADMIN_EMAIL &&
@@ -22,5 +20,5 @@ export const useIsAdmin = () => {
     }
   }
 
-  return true
+  return isAdmin
 }

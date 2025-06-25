@@ -1,5 +1,5 @@
 import { observer } from 'mobx-react-lite'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate, useLocation } from 'react-router-dom'
 import { ShoppingCart } from '@/shared/icons/shoppingcart'
 import { Heart } from '@/shared/icons/Heart'
 import { User } from '@/shared/icons/User'
@@ -13,16 +13,21 @@ import { Users } from '@/shared/icons/Users'
 import { Gauge } from '@/shared/icons/Gauge'
 import { Warehouse } from '@/shared/icons/Warehouse'
 import { Files } from '@/shared/icons/Files'
+import { useIsAdmin } from '@/shared/hooks/admin/isAdmin'
 
 export const Routes = observer(() => {
   const { items: cartItems } = cart
   const { items: favoriteItems } = favorite
   const [showUserMenu, setShowUserMenu] = useState(false)
-  const isAdmin = true
+  const isAdmin = useIsAdmin()
+  const navigate = useNavigate()
+  const { pathname } = useLocation()
+
+  const isAdminPanel = isAdmin && pathname.startsWith('/admin')
 
   return (
     <div className={`${s.routes} df aic`}>
-      {isAdmin ? (
+      {isAdminPanel ? (
         <>
           <Link to="/admin">
             <Gauge />
@@ -53,7 +58,7 @@ export const Routes = observer(() => {
         </>
       )}
       <div style={{ position: 'relative' }}>
-        <button onClick={() => setShowUserMenu(v => !v)}>
+        <button onClick={() => (isAdmin ? navigate('/admin') : setShowUserMenu(v => !v))}>
           <User />
         </button>
         <UserButton showUserMenu={showUserMenu} setShowUserMenu={setShowUserMenu} />

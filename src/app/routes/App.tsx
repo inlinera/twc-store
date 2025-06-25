@@ -2,6 +2,7 @@ import { lazy, Suspense } from 'react'
 import { Header } from '@/widgets/layout/header'
 import { Navigation } from '@/widgets/layout/navigation'
 import { Routes, Route } from 'react-router-dom'
+import { useIsAdmin } from '@/shared/hooks/admin/isAdmin'
 
 const BuyPage = lazy(() => import('@/pages/buy'))
 const CartPage = lazy(() => import('@/pages/cart'))
@@ -19,6 +20,8 @@ const AdminUsersPage = lazy(() => import('@/pages/admin-users'))
 const AdminAnalyticsPage = lazy(() => import('@/pages/admin-analytics'))
 
 export const App = () => {
+  const isAdmin = useIsAdmin()
+
   return (
     <>
       <Header />
@@ -35,11 +38,15 @@ export const App = () => {
             <Route path="/order/buy" element={<BuyPage />} />
             <Route path="/order" element={<OrderPage />} />
             <Route path="order/track" element={<TrackOrder />} />
-            <Route path="/admin" element={<AdminMainPage />} />
-            <Route path="/admin/orders" element={<AdminOrdersPage />} />
-            <Route path="/admin/products" element={<AdminProductsPage />} />
-            <Route path="/admin/users" element={<AdminUsersPage />} />
-            <Route path="/admin/analytics" element={<AdminAnalyticsPage />} />
+            {isAdmin && (
+              <>
+                <Route path="/admin" element={<AdminMainPage />} />
+                <Route path="/admin/orders" element={<AdminOrdersPage />} />
+                <Route path="/admin/products" element={<AdminProductsPage />} />
+                <Route path="/admin/users" element={<AdminUsersPage />} />
+                <Route path="/admin/analytics" element={<AdminAnalyticsPage />} />
+              </>
+            )}
           </Routes>
         </Suspense>
       </main>

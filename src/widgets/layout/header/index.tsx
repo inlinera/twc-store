@@ -5,10 +5,15 @@ import { observer } from 'mobx-react-lite'
 import { states } from '@/shared/stores/states'
 import { LocationButton } from './ui/location-button'
 import { Routes } from './components/routes'
+import { useIsAdmin } from '@/shared/hooks/admin/isAdmin'
+import { useLocation } from 'react-router-dom'
 
 export const Header = observer(() => {
   const { setTheme } = states
-  const isAdmin = true
+  const { pathname } = useLocation()
+  const isAdmin = useIsAdmin()
+
+  const isAdminPanel = isAdmin && pathname.startsWith('/admin')
 
   return (
     <header className={`${s.header} df aic`}>
@@ -20,7 +25,7 @@ export const Header = observer(() => {
       </div>
       <div className={`${s.logo} df aic`}>
         <HeaderLogo />
-        {isAdmin && <span>ADMIN</span>}
+        {isAdminPanel && <span>ADMIN</span>}
       </div>
       <Routes />
     </header>

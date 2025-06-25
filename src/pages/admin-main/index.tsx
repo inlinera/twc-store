@@ -1,4 +1,3 @@
-import { useIsAdmin } from '@/shared/hooks/admin/isAdmin'
 import { InfoAdminMain } from '@/entities/admin-main'
 import s from './index.module.scss'
 import { Line } from '@/entities/@common/line'
@@ -56,7 +55,6 @@ const rightItems = [
 ]
 
 const AdminMainPage = observer(() => {
-  useIsAdmin()
   const { getAllOrders, orders, loading } = order
   const { getProducts, items, loading: productsLoading } = products
 
