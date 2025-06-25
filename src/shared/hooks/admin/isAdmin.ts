@@ -3,7 +3,7 @@ import type { IUser } from '@/shared/interfaces/IUser'
 import { useState } from 'react'
 
 export const useIsAdmin = () => {
-  const [isAdmin, setIsAdmin] = useState(true)
+  const [isAdmin, setIsAdmin] = useState(false)
 
   const user = Cookies.get('user')
 

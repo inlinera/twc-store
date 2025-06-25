@@ -1,5 +1,6 @@
 import s from './index.module.scss'
 import { InfoLine } from '@/entities/@common/info-line'
+import { OrderLineChartComponent, VisitorsLineChartComponent } from '@/entities/admin-analytics/'
 import { CreditCard } from '@/shared/icons/CreditCard'
 import { Package } from '@/shared/icons/Package'
 
@@ -20,6 +21,10 @@ const AdminAnalyticsPage = () => {
     <div className={`${s.adminAnalyticsPage} df fdc`}>
       <InfoLine items={moneyInfo} />
       <InfoLine items={ordersInfo} />
+      <div className={`${s.charts} df aic jcsa`}>
+        <OrderLineChartComponent />
+        <VisitorsLineChartComponent />
+      </div>
     </div>
   )
 }

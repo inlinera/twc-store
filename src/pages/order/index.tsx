@@ -10,18 +10,24 @@ import { Breadcrumbs } from '@/shared/ui/breadcrumbs'
 import { useForm } from 'react-hook-form'
 import { order } from '@/shared/stores/api/order'
 import type { IOrder } from '@/shared/interfaces/IOrder'
+import { useNavigate } from 'react-router-dom'
 
 const OrderPage = observer(() => {
   const { setPath } = states
   const { register, handleSubmit } = useForm<Pick<IOrder, 'id' | 'email'>>()
   const { order: orderData, getOrder } = order
+  const navigate = useNavigate()
 
   useEffect(() => {
     setPath(['Отследить заказ'])
   }, [])
 
   const onSubmit = (data: Pick<IOrder, 'id' | 'email'>) => {
-    getOrder(data.id).then(() => console.log(orderData))
+    getOrder(data.id).then(() => {
+      if (orderData) {
+        navigate('/order/track')
+      }
+    })
   }
 
   return (

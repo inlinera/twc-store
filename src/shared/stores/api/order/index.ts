@@ -4,32 +4,7 @@ import type { IOrder } from '@/shared/interfaces/IOrder'
 
 class OrderStore {
   orders: IOrder[] | null = null
-  order: IOrder | null = {
-    id: `547823`,
-    firstName: 'Имя',
-    lastName: 'Фамилия',
-    email: 'example@example.ru',
-    phone: '800000000',
-    address: 'Россия, г.Санкт-Петербург, улица Заставская, дом 22, к.2, лит. А, помещ. 303',
-    region: 'Ленинградская область',
-    city: 'Санкт-Петербург',
-    postCode: '196006',
-    products: {
-      'Футболка Online Store': {
-        id: '681fb35b1cad84bc5b9c8d6a',
-        specification: {
-          perple: {
-            size: 'XL',
-          },
-        },
-        count: 2,
-      },
-    },
-    status: {
-      'Заказ создан': '12.04.2025, 18:00',
-    },
-    price: 1000,
-  }
+  order: IOrder | null = null
   activeOrders: IOrder[] | null = null
   loading = false
   private api = `${import.meta.env.VITE_API_URL}/order`
@@ -84,8 +59,9 @@ class OrderStore {
 
   getOrder = async (id: string) => {
     this.loading = true
+    this.order = null
     try {
-      const response = await axios.get<IOrder>(`${this.api}/getorder/${id}`)
+      const response = await axios.get<IOrder>(`${this.api}/getorderbyid/${id}`)
 
       if (response.data) {
         this.order = response.data

@@ -86,8 +86,8 @@ export const UserButton = observer(({ showUserMenu, setShowUserMenu }: UserButto
           </>
         ) : (
           <>
+            <span style={{ padding: 8 }}>{user.id}</span>
             <span style={{ padding: 8 }}>{user.email}</span>
-            <span style={{ padding: 8 }}>{user.phone}</span>
           </>
         )}
       </div>

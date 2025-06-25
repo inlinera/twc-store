@@ -40,10 +40,10 @@ class AuthStore {
     }
   }
 
-  login = async (user: Pick<IUser, 'email' | 'phone'>) => {
+  login = async (user: Pick<IUser, 'id'>) => {
     this.loading = true
     try {
-      const response = await axios.post(`${this.api}/login/${user.email}/${user.phone}`)
+      const response = await axios.post(`${this.api}/getuserbyid/${user.id}`)
 
       if (response.data) {
         this.user = response.data
