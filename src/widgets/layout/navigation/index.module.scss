@@ -4,6 +4,11 @@
   margin-bottom: 20px;
   gap: clamp(5px, 1vw, 10px);
 
+  svg,
+  svg path {
+    color: #fff;
+  }
+
   .input {
     background-color: var(--purple-color) !important;
     color: #fff;

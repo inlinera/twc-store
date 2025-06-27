@@ -13,7 +13,7 @@ const RegisterPage = observer(() => {
 
   const onSubmit = useCallback(
     (data: IOrder) => {
-      const user: IUser = {
+      const user: Omit<IUser, 'id'> = {
         firstName: data.firstName,
         lastName: data.lastName,
         email: data.email,

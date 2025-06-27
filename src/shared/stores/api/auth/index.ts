@@ -21,7 +21,7 @@ class AuthStore {
     }
   }
 
-  register = async (user: IUser) => {
+  register = async (user: Omit<IUser, 'id'>) => {
     this.loading = true
     try {
       const response = await axios.post<IUser>(`${this.api}/create`, user)
@@ -30,8 +30,6 @@ class AuthStore {
         this.user = response.data
         Cookies.set('user', JSON.stringify(this.user), { expires: 30 })
       }
-
-      console.log(response)
       return response.data
     } catch (error) {
       console.error(error)
