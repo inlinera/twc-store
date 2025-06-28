@@ -1,6 +1,6 @@
 import { observer } from 'mobx-react-lite'
 import { Link, useNavigate, useLocation } from 'react-router-dom'
-import { ShoppingCart } from '@/shared/icons/shoppingcart'
+import { ShoppingCart } from '@/shared/icons/ShoppingCart'
 import { Heart } from '@/shared/icons/Heart'
 import { User } from '@/shared/icons/User'
 import { UserButton } from '../../ui/user-button'

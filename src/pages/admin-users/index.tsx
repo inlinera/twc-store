@@ -1,5 +1,5 @@
 import { Input } from '@/shared/ui/input'
-import { Search } from '@/shared/icons/search'
+import { Search } from '@/shared/icons/Search'
 import s from './index.module.scss'
 import { Line } from '@/entities/@common/line'
 import { observer } from 'mobx-react-lite'

@@ -1,4 +1,4 @@
-import { ShoppingCart } from '@/shared/icons/shoppingcart'
+import { ShoppingCart } from '@/shared/icons/ShoppingCart'
 import { Button } from '@/shared/ui/button'
 import { observer } from 'mobx-react-lite'
 import type { IProduct } from '@/shared/interfaces/IProduct'

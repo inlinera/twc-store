@@ -1,5 +1,5 @@
-import { MapPinArea } from '@/shared/icons/mappinarea'
-import { CaretDown } from '@/shared/icons/caretdown'
+import { MapPinArea } from '@/shared/icons/MapPinArea'
+import { CaretDown } from '@/shared/icons/CaretDown'
 import { observer } from 'mobx-react-lite'
 import { useLocation, useNavigate } from 'react-router-dom'
 import { useIsAdmin } from '@/shared/hooks/admin/isAdmin'

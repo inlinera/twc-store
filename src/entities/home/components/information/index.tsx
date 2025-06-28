@@ -1,7 +1,7 @@
 import { Package } from '@/shared/icons/Package'
 import { Trophy } from '@/shared/icons/Trophy'
 import { CreditCard } from '@/shared/icons/CreditCard'
-import { Headphones } from '@/shared/icons/headphones'
+import { Headphones } from '@/shared/icons/Headphones'
 import { InfoLine } from '@/entities/@common/info-line'
 
 const items = [

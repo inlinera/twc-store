@@ -1,11 +1,11 @@
 import { Input } from '@/shared/ui/input'
 import s from './index.module.scss'
-import { Search } from '@/shared/icons/search'
+import { Search } from '@/shared/icons/Search'
 import { Link, useLocation } from 'react-router-dom'
-import { MapPinLine } from '@/shared/icons/mappinline'
-import { Headphones } from '@/shared/icons/headphones'
-import { Info } from '@/shared/icons/info'
-import { CaretDown } from '@/shared/icons/caretdown'
+import { MapPinLine } from '@/shared/icons/MapPinLine'
+import { Headphones } from '@/shared/icons/Headphones'
+import { Info } from '@/shared/icons/Info'
+import { CaretDown } from '@/shared/icons/CaretDown'
 import type { ILinkButton } from '@/shared/interfaces/ILinkButton'
 
 const btns: ILinkButton[] = [

@@ -1,4 +1,4 @@
-import { Lamp } from '@/shared/icons/lamp'
+import { Lamp } from '@/shared/icons/Lamp'
 import s from './index.module.scss'
 import { HeaderLogo } from '@/app/assets/images/header-logo'
 import { observer } from 'mobx-react-lite'

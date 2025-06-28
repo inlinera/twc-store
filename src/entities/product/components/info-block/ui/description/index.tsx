@@ -3,7 +3,7 @@ import s from './index.module.scss'
 import { Medal } from '@/shared/icons/Medal'
 import { Truck } from '@/shared/icons/Truck'
 import { HandShake } from '@/shared/icons/HandShake'
-import { Headphones } from '@/shared/icons/headphones'
+import { Headphones } from '@/shared/icons/Headphones'
 import { CreditCard } from '@/shared/icons/CreditCard'
 
 export const ProductDescription = ({ subtitle }: Pick<IProduct, 'subtitle'>) => {
